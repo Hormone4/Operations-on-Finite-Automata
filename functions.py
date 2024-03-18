@@ -1,16 +1,27 @@
 
-def display(M, L, E):
-    # m = max(len(str(max(map(max,M)))), len(str(min(map(min,M)))))   # if negative numbers
-    m = len(str(max(map(max,M))))
-    print(" ",end=" "*(m+2)); print(" ",end=" "*(m+2))
-    for i in range(len(M[0])-1): print(L[i],end=" "*(m+2))   # print the entries
+def display(M, L, E):   # L is symbols in the alphabet, E is list of initial/ final states (in order)
+    #m = len(str(max(map(max,M))))
+    m = 4
+    print(" "*(m*2+6),end="")
+    for i in range(len(M[0])-1):
+        print(L[i],end=" "*(m+2))   # print the symbols in the alphabet
     print()
     a = '{:'+str(m+1)+'}'
     for i in range(len(M)) :
         print(E[i],end="")   # print initial or final
         for j in range(len(M[0])):
-            if j == len(M[0])-1: print(a.format(M[i][j]),"|")
-            else               : print(a.format(M[i][j]),end=" |")
+            if isinstance(M[i][j], tuple):   # if the element is a tuple
+                print(a.format(" "+str(M[i][j])[1:-1]),end="")
+            else:
+                if M[i][j] == -1:
+                    print(a.format(" "*m+"-"),end="")
+                else:
+                    print(a.format(M[i][j]),end="")
+
+            if j == len(M[0])-1:
+                print(" |")
+            else:
+                print("",end=" |")
     print()
 
 
@@ -19,16 +30,24 @@ def display(M, L, E):
 if __name__ == "__main__":
     # TEST
     # L is symbols in the alphabet, E is list of initial/ final states (in order)
-    L = ["a","b","c","d","e"]
+    L = ["a","b","c","d"]
     E = [" ->", "   ", "<->", "<- "]
-    A = [
-        [0, 1, 2, 3, 4, 1],
-        [2, 1, 2, 3, 4, 3],
-        [3, 1, 2, 3, 4, 3],
-        [4, 1, 2, 3, 4, 3]
-        ]
+    A = [[0, 1, (2,3), 3, 4],
+         [2, 2, 2, 3, 1],
+         [3, 4, 2, 3, 4],
+         [4, 4, 4, 3, 4]]
 
 
 
     print()
+    display(A, L, E)
+
+    L = ["a","b"]
+    E = [" ->", "   ", "   ", "   ", "<- "]
+    A = [[0, (0,1), 0],
+        [1, -1, 2],
+        [2, 3, -1],
+        [3, 4, -1],
+        [4, -1, -1]]
+    
     display(A, L, E)
