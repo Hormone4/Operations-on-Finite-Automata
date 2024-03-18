@@ -1,6 +1,6 @@
 
-def show(M, T, E):   # T is symbols in the alphabet, E is list of initial/ final
-    m = max(len(str(max(map(max,M)))), len(str(min(map(min,M)))))
+def display(M, L, E):
+    # m = max(len(str(max(map(max,M)))), len(str(min(map(min,M)))))   # if negative numbers
     m = len(str(max(map(max,M))))
     print(" ",end=" "*(m+2)); print(" ",end=" "*(m+2))
     for i in range(len(M[0])-1): print(L[i],end=" "*(m+2))   # print the entries
@@ -14,17 +14,21 @@ def show(M, T, E):   # T is symbols in the alphabet, E is list of initial/ final
     print()
 
 
-L = ["a","b","c","d","e"]
-E = [" ->", "   ", "<->", "<- "]
-A = [
-     [0, 1, 222, 3, 4, 1],
-     [2, 1, 2, 3, 4, 3],
-     [3, 1, 2, 3, 4, 3],
-     [4, 1, 2, 3, 4, 3]
-    ]
+
+
+if __name__ == "__main__":
+    # TEST
+    # L is symbols in the alphabet, E is list of initial/ final states (in order)
+    L = ["a","b","c","d","e"]
+    E = [" ->", "   ", "<->", "<- "]
+    A = [
+        [0, 1, 2, 3, 4, 1],
+        [2, 1, 2, 3, 4, 3],
+        [3, 1, 2, 3, 4, 3],
+        [4, 1, 2, 3, 4, 3]
+        ]
 
 
 
-print()
-show(A, L, E)
-i = input()
+    print()
+    display(A, L, E)
