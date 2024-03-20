@@ -65,5 +65,3 @@ if __name__ == "__main__":
         [3, 4, -1],
         [4, -1, -1]]
     display(A, L, E)
-
-    a = input("Press enter to exit")
