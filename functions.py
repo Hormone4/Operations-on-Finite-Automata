@@ -22,6 +22,8 @@ def display(M, L, E):   # L is symbols in the alphabet, E is list of initial/ fi
         for j in range(len(M[0])):
             if isinstance(M[i][j], list):
                 print(a.format(" "+str(M[i][j])[1:-1]),end="")
+            elif isinstance(M[i][j], str):
+                print(a.format(" "*m+M[i][j]),end="")
             else:
                 if M[i][j] == -1:
                     print(a.format(" "*m+"-"),end="")
@@ -59,9 +61,9 @@ if __name__ == "__main__":
 
     L = ["a","b"]
     E = [" ->", "   ", "   ", "   ", "<- "]
-    A = [[0, [0,1,8,9], 0],
+    A = [[0, [0,1,8,"P"], 0],
         [1, -1, 2],
         [2, 3, -1],
-        [3, 4, -1],
+        [3, [4,'P'], -1],
         [4, -1, -1]]
     display(A, L, E)
