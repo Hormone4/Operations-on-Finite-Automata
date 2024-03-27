@@ -17,7 +17,7 @@ print(E)
 
 #transition matrice
 
-A = load_transition(data)
+A = load_transition(data,L)
 print(A)
 
 display(A, L, E)
