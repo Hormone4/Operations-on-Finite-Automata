@@ -1,5 +1,6 @@
 # Mainloop
 from loader import *
+from functions import *
 
 data = load_data('test_automata.txt')  #import data
 print(data)
@@ -19,3 +20,4 @@ print(E)
 A = load_transition(data)
 print(A)
 
+display(A, L, E)

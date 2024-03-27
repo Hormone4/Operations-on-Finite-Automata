@@ -1,11 +1,11 @@
 # L is symbols in the alphabet, E is list of initial/ final states (in order)
 def display(M, L, E):
     # The goal is to find m, the maximum length of the strings in the matrix M
-    
+    print()
     # if the matrix contains a list aka if the automaton is non-deterministic
     contains_list = False
     m = 0
-    for i in A:
+    for i in M:
         for j in i:
             if isinstance(j, list):
                 contains_list = True
