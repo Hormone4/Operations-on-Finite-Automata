@@ -12,10 +12,11 @@ def load_data(file):
 
 def load_language(data):
     L = []
-
-    for i in range(5, len(data)):
+    i=5
+    while len(L) != (ord(data[0])-48):                                  #we use while to not go through the whole list
         if data[i][1] not in L:
             L.append(data[i][1])
+        i += 1
     return L
 
 
@@ -35,7 +36,7 @@ def load_state(data):
     return E;
 
 
-def load_transition(data):
+def load_transition(data,L):
 
     A = [[-1 for j in range(len(L) + 1)] for i in range((ord(data[1]) - 48))]
 
@@ -47,31 +48,8 @@ def load_transition(data):
         if A[ord(i[0]) - 48][ord(i[1]) - 96] == -1:
             A[ord(i[0]) - 48][ord(i[1]) - 96] = ord(i[2]) - 48
         else:
-            if not isinstance(A[ord(i[0]) - 48][ord(i[1]) - 96], list):
+            if not isinstance(A[ord(i[0]) - 48][ord(i[1]) - 96], list):                     #check if its not yet a list so that we can use append
                 A[ord(i[0]) - 48][ord(i[1]) - 96] = [A[ord(i[0]) - 48][ord(i[1]) - 96]]
             A[ord(i[0]) - 48][ord(i[1]) - 96].append(ord(i[2]) - 48)
 
     return A
-
-
-# Example of the text file:
-# 2
-# 5
-# 1 0
-# 1 4
-# 6
-# 0a0
-# 0b0
-# 0a1
-# 1b2
-# 2a3
-# 3a4
-
-# Format needed for the data:
-L = ["a","b"]
-E = [" ->", "   ", "   ", "   ", "<- "]   # " ->" is initial, "   " is neither, "<->" is both, "<- " is final
-A = [[0, (0,1), 0],
-     [1, -1, 2],
-     [2, 3, -1],
-     [3, 4, -1],
-     [4, -1, -1]]
