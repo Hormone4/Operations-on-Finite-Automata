@@ -53,7 +53,6 @@ def display(M, L, E):   # L is symbols in the alphabet, E is list of initial/ fi
                 print(" |")
             else:
                 print("",end=" |")
-    print()
 
 
 
