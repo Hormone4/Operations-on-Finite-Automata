@@ -80,3 +80,48 @@ if __name__ == "__main__":
         ['D', ['B','P'], -1],
         ['E', -1, 'C']]
     display(A, L, E)
+
+
+def automata_type(M,E,L) :   #defines type of the automata
+    complete = "yes"
+    deterministic = "yes"
+    standard = "yes"
+    for i in M :
+        for j in range(1, len(L)+1) :
+            if isinstance(i[j], list) :
+                deterministic = "no"
+                for k in i[j] :
+                    if k == -1 :
+                        complete = "no"
+                    if k == 0 :
+                        standard = "no"
+            else :
+                print(i[j])
+                if i[j] == -1:
+                    complete = "no"
+                if i[j] == 0:
+                    standard = "no"
+    if deterministic == "yes" :
+        count = 0
+        for m in E:
+            if m == " ->":
+                count += 1
+            if count >1:
+                deterministic = "no"
+                break
+    print("complete : "+ complete+"\ndeterministic : "+ deterministic+"\nstandard : " + standard)
+    # we may want to return the arguments as a list to use it later
+
+def standardize(M,E,L):
+    new_entry = []
+    for i in range(0,len(L)+1): #creation of the new starting point of the automaton
+        new_entry.append(M[0][i])
+    for k in M:
+        for j in range(0,len(L)+1):
+            if isinstance(k[j],list): #we check if the automaton may not be deterministic
+                for l in k[j]:
+                    l += 1
+            elif k[j] != -1:
+                k[j] +=1
+    M.insert(0,new_entry) #insertion of the new starting point
+    return(M)

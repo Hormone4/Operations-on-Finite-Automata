@@ -1,5 +1,6 @@
 # Mainloop
 from loader import *
+from functions import *
 
 data = load_data('test_automata.txt')  #import data
 print(data)
@@ -19,3 +20,11 @@ print(E)
 A = load_transition(data,L)
 print(A)
 
+#type of automata
+
+automata_type(A,E,L)
+
+#automata_type(A,E,L)
+
+A_standard =standardize(A,E,L)
+print(A_standard)
