@@ -64,34 +64,9 @@ def display(M, L, E=None):   # L is symbols in the alphabet, E is list of initia
 
 
 
-if __name__ == "__main__":
-    # TEST
-    # L is symbols in the alphabet, E is list of initial/ final states (in order)
-    L = ["a","b","c","d"]
-    E = [" ->", "   ", "<->", "<- ", "   "]
-    # the first column of A is the list of states, the others are the transitions
-    A = [[0, 1, [2,'P'], 3, 4],
-         [2, 2, 2, 3, 1],
-         [3, 4, 2, -1, 4],
-         [4, -1, "P", 3, 4],
-         ['P', 'P', 'P', 'P', 'P']]
-    display(A, L, E)
-
-    L = ["a","b"]
-    E = [" ->", "   ", "   ", "   ", "<- "]
-    A = [['A', ['B','A','P'], 'B'],
-        ['B', -1, ['E','D']],
-        ['C', 'D', -1],
-        ['D', ['B','P'], -1],
-        ['E', -1, 'C']]
-    display(A, L, E)
-
-    display(A, L)
 
 
-
-
-def automata_type(M,E,L) :   #defines type of the automata
+def automata_type(M, L, E) :   #defines type of the automata
     complete = 1
     deterministic = 1
     standard = 1
@@ -124,7 +99,7 @@ def automata_type(M,E,L) :   #defines type of the automata
 
 
 
-def standardize(M,E,L):
+def standardize(M, L, E):
     new_entry = []
     for i in range(0,len(L)+1): #creation of the new starting point of the automaton
         new_entry.append(M[0][i])
@@ -137,3 +112,31 @@ def standardize(M,E,L):
                 k[j] +=1
     M.insert(0,new_entry) #insertion of the new starting point
     return(M)
+
+
+
+
+
+if __name__ == "__main__":
+    # TEST
+    # L is symbols in the alphabet, E is list of initial/ final states (in order)
+    L = ["a","b","c","d"]
+    E = [" ->", "   ", "<->", "<- ", "   "]
+    # the first column of A is the list of states, the others are the transitions
+    A = [[0, 1, [2,'P'], 3, 4],
+         [2, 2, 2, 3, 1],
+         [3, 4, 2, -1, 4],
+         [4, -1, "P", 3, 4],
+         ['P', 'P', 'P', 'P', 'P']]
+    display(A, L, E)
+
+    L = ["a","b"]
+    E = [" ->", "   ", "   ", "   ", "<- "]
+    A = [['A', ['B','A','P'], 'B'],
+        ['B', -1, ['E','D']],
+        ['C', 'D', -1],
+        ['D', ['B','P'], -1],
+        ['E', -1, 'C']]
+    display(A, L, E)
+
+    display(A, L)

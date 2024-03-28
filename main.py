@@ -15,18 +15,19 @@ print("Initial / terminal states:", E)
 
 #transition matrice
 A = load_transition(data,L)
+display(A, L, E)
 
 #type of automata
 
-S = automata_type(A,E,L)
-print("\n",S,"\n")
+S = automata_type(A,L,E)
+print("\nStandard, complete, deterministic:",S,"\n")
 
-#automata_type(A,E,L)
+#automata_type(A,L,E)
 
-A_standard =standardize(A,E,L)
-
-
+A_standard =standardize(A,L,E)
 
 
-print("Automaton:", A)
+
+
+print("Standard automaton:", A)
 display(A, L)
