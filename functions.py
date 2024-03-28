@@ -1,7 +1,10 @@
 
-def display(M, L, E):   # L is symbols in the alphabet, E is list of initial/ final states (in order)
-    # The goal is to find m, the maximum length of the strings in the matrix M
+def display(M, L, E=None):   # L is symbols in the alphabet, E is list of initial/ final states (in order)
+    # The goal is to find m, the length of the longest element in the matrix M
     print()
+    if E == None:   # if there is no list of initial/final states
+        E = ["   " for i in range(len(M))]
+    
     # if the matrix contains a list aka if the automaton is non-deterministic
     contains_list = False
     m = 0
@@ -87,3 +90,5 @@ if __name__ == "__main__":
         ['D', ['B','P'], -1],
         ['E', -1, 'C']]
     display(A, L, E)
+
+    display(A, L)
