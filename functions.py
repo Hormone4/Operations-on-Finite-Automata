@@ -18,16 +18,13 @@ def display(M, L, E):   # L is symbols in the alphabet, E is list of initial/ fi
     
     # if the automaton is deterministic
     if contains_list == False:
-        print("kaka")
         for i in M:
             for j in i:
                 if isinstance(j, str):
                     m = max(m, len(j))
                 else:
                     m = max(m, len(str(j)))
-
         m = max(m, len(str(max(map(max,M)))))
-    print(m)
 
     # print the symbols in the alphabet
     print(" "*(m*2+6),end="")
