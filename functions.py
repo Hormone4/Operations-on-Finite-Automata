@@ -92,33 +92,33 @@ if __name__ == "__main__":
 
 
 def automata_type(M,E,L) :   #defines type of the automata
-    complete = "yes"
-    deterministic = "yes"
-    standard = "yes"
+    complete = 1
+    deterministic = 1
+    standard = 1
     for i in M :
         for j in range(1, len(L)+1) :
             if isinstance(i[j], list) :
-                deterministic = "no"
+                deterministic = 0
                 for k in i[j] :
                     if k == -1 :
-                        complete = "no"
+                        complete = 0
                     if k == 0 :
-                        standard = "no"
+                        standard = 0
             else :
-                print(i[j])
                 if i[j] == -1:
-                    complete = "no"
+                    complete = 0
                 if i[j] == 0:
-                    standard = "no"
-    if deterministic == "yes" :
+                    standard = 0
+    if deterministic == 1 :
         count = 0
         for m in E:
             if m == " ->":
                 count += 1
             if count >1:
-                deterministic = "no"
+                deterministic = 0
                 break
-    print("complete : "+ complete+"\ndeterministic : "+ deterministic+"\nstandard : " + standard)
+    S = [standard,complete,deterministic]
+    return S
     # we may want to return the arguments as a list to use it later
 
 
