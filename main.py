@@ -3,21 +3,17 @@ from loader import *
 from functions import *
 
 data = load_data('test_automata.txt')  #import data
-print(data)
-
+print("text file:", data)
 
 #create the language
-
 L = load_language(data)
-print(L)
+print("\nAlphabet: ", L)
 
-#terminal and non terminal matrice
+#terminal and non terminal list
 E = load_state(data)
-print(E)
+print("Initial / terminal states:", E)
 
 #transition matrice
-
 A = load_transition(data,L)
-print(A)
-
+print("Automaton:", A)
 display(A, L, E)

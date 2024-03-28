@@ -6,4 +6,5 @@ __pycache__/
 # PyCharm
 .idea/
 
+# Office
 PROJECT.docx
