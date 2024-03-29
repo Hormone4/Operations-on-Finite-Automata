@@ -9,7 +9,7 @@
 7. Test word recognition
 8. Create a FA recognizing the complementary language
 ## Data format
-Example of the text file:<br>
+### Example of the text file:<br>
 2<br>
 5<br>
 1 0<br>
@@ -22,11 +22,11 @@ Example of the text file:<br>
 2a3<br>
 3a4<br>
 <br>
-Format of the data after extraction:<br>
-L = ["a","b"]<br>
-E = [" ->", "   ", "   ", "   ", "<- "]   # " ->" is initial, "   " is neither, "<->" is both, "<- " is final<br>
+### Format of the data after extraction:<br>
+L = ["a","b"]   # Alphabet<br>
+E = [" ->", "   ", "   ", "   ", "<- "]   # List of initial/final states in order (" ->" is initial, "<- " is final, "   " is neither, "<->" is both)<br>
 A = [[0, [0,1], 0],<br>
      [1, -1, 2],<br>
      [2, 3, -1],<br>
      [3, 4, -1],<br>
-     [4, -1, -1]]<br>
+     [4, -1, -1]]   # -1 is for no transition 'P' is for garbage state<br> 
