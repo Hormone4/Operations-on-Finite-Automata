@@ -4,7 +4,7 @@
 2. Display it in the terminal
 3. Display other types of information: is the FA deterministic? deterministic and complete? standard?
 4. Standardize the FA
-5. Determinize and complete the FA
+5. Complete and determinize the FA
 6. Minimize the FA showing all the partitions and the studies
 7. Test word recognition
 8. Create a FA recognizing the complementary language
