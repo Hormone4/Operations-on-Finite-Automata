@@ -27,7 +27,6 @@ def display(M, L, E=None):   # L is symbols in the alphabet, E is list of initia
                     m = max(m, len(j))
                 else:
                     m = max(m, len(str(j)))
-        m = max(m, len(str(max(map(max,M)))))
 
     # print the symbols in the alphabet
     print(" "*(m*2+6),end="")
