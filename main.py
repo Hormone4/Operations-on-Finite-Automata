@@ -11,6 +11,8 @@ print("\nAlphabet: ", L)
 
 #terminal and non terminal list
 E = load_state(data)
+#print("Initial / terminal states:", E)
+E[2] = " ->"
 print("Initial / terminal states:", E)
 
 #transition matrice
@@ -22,10 +24,21 @@ display(A, L, E)
 S = automata_type(A,L,E)
 print("\nStandard, complete, deterministic:",S,"\n")
 
-#automata_type(A,L,E)
 
-A_standard,E =standardize(A,L,E)
+standardize(A,L,E)
 
 
 print("Standard automaton:", A)
-display(A, L)
+display(A, L, E)
+
+
+
+
+
+
+
+
+
+
+
+input()

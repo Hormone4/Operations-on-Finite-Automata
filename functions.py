@@ -107,14 +107,15 @@ def standardize(M, L, E):
             if isinstance(k[j],list): #we check if the automaton may not be deterministic
                 for l in k[j]:
                     l += 1
-            elif k[j] != -1:
-                k[j] +=1
+            #elif k[j] != -1:
+            #    k[j] +=1
     if E[0] == " ->" :
         E[0] = "   "
     else :
         E[0] = "<- "
     E.insert(0," ->") #update of the state matrice
     M.insert(0,i) #insertion of the new starting point
+    M[0][0] = 'i'
 
     return(M,E)
 
