@@ -10,13 +10,13 @@ def minimizeReal(A, L, partition0, letter='@'):
             singletons = False
             break
     if singletons:
-        print("Automaton is already minimized.")
+        print("Automaton is already minimal.")
         return
     
-    # If not, separate the states
+    # If not, study the states
     else:
         # Extract the states from the partition and store them as new automata in a list of automata
-        study = []
+        study = []   # List of automata
         targets = []
         names = []
         for set in partition0:
@@ -25,9 +25,6 @@ def minimizeReal(A, L, partition0, letter='@'):
                 targets.append([state])
             study.append(targets)
             targets = []
-        #print("\nStudy:",study)
-        #print("Names:", names)
-        #print()
 
         # For each new automata in the list
         for namenum, el in enumerate(study):
@@ -48,40 +45,61 @@ def minimizeReal(A, L, partition0, letter='@'):
                 print("Study of", names[namenum]+":\n   ", el[0], "singleton")
             print()
 
-
-        #print("\nStudy:")
-        #for i in study:
-        #    print(i)
-
-        # Study the separation of the states and create a new partition
-        partition1 = {}
-
+        # Study the separation of the new automaton
+        separation = []
         for a in study:
-            for s in a:
-                sb = ""
-                for sh in s[1:]:
-                    sb += str(sh)
-                if sb not in partition1:
-                    partition1[sb] = []
-                partition1[sb] += [s[0]]
+            if len(a) == 1:
+                separation.append(False)
+            else:
+                sep = []
+                for s in a:
+                    sb = ""
+                    for sh in s[1:]:
+                        sb += str(sh)
+                    sep.append(sb)
+                if all(element == sep[0] for element in sep):   # check if all the elements of sep are the same
+                    separation.append(False)
+                else:
+                    separation.append(True)
 
-                pass
+        # If there is a separation, create a new partition
+        if True in separation:
+            print("There is separation in the studies. We need to create a new partition.")
+            # Create the new partition
+            partition1 = {}
+            for i, a in enumerate(study):
+                for s in a:
+                    sb = ""
+                    for sh in s[1:]:
+                        sb += str(sh)
+                    if sb == "":
+                        sb = str(i)
+                    if sb not in partition1:
+                        partition1[sb] = []
+                    partition1[sb] += [s[0]]
 
-        letter = chr(ord(letter)+1)
-        keys_to_change = list(partition1.keys())   # Create a list of the keys you want to change
-        for i, old_key in enumerate(keys_to_change):   # Use a for loop to replace the keys
-            new_key = letter+str(i)
-            partition1[new_key] = partition1.pop(old_key)
+            # Change the keys of the partition to letters
+            letter = chr(ord(letter)+1)
+            keys_to_change = list(partition1.keys())   # Create a list of the keys you want to change
+            for i, old_key in enumerate(keys_to_change):   # Use a for loop to replace the keys
+                new_key = letter+str(i)
+                partition1[new_key] = partition1.pop(old_key)
 
-        #print(partition1)
-        printPartition(partition1, ord(letter)-64)
+            # Display the new partition
+            printPartition(partition1, ord(letter)-64)
+            
+            return minimizeReal(A, L, partition1, letter)
 
         #print(partition0)
         # if partition0 == partition1, the automaton is minimized
-
-
-    return
-    return minimizeReal(A, L, partition1, letter)
+        #if equalPartition(partition0, partition1):
+        #    print("Automaton is minimized.")
+        #    # Display the minimized automaton
+        #    return
+        #else:
+        #    print("Automaton is not yet minimal.")
+        #    printPartition(partition1, ord(letter)-64)
+        #    return minimizeReal(A, L, partition1, letter)
 
 
 
@@ -111,18 +129,24 @@ def minimize(A, L, E):
 
 def printPartition(partition, num):
     print("\nPARTITION "+str(num)+":")
-    #print("\nPartition "+str(num)+":")
-    print('θ'+str(num), end=" = ")
-    s = ""
-    for i in partition:
-        s += i + " ∪ "
-    print(s[:-3])
+
+    # Print the sets of the partition
+    print("Sets:")
     for i in partition:
         s = str(partition[i])
         s = s.replace("[", "{")
         s = s.replace("]", "}")
         s = s.replace("\'", "")
-        print(i + " = " + s)
+        print(" "+i + " = " + s)
+
+    # Print the union of the sets of the partition
+    print("Union:")
+    print(' θ'+str(num), end=" = ")
+    s = ""
+    for i in partition:
+        s += i + " ∪ "
+    print(s[:-3])
+
     print()
 
 
@@ -134,6 +158,7 @@ def printPartition(partition, num):
 
 if __name__ == "__main__":
     from functions import *
+    print()
     L = ['a', 'b']
     E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
     A = [
