@@ -1,13 +1,13 @@
 # Operations-on-Finite-Automata
 ## Functions
-1. Reading a FA that you should first code in a text file, then storing that information in memory
-2. Display it on the screen.
-3. Displaying other types of information: is the FA deterministic? deterministic and complete? standard?
-4. If the FA is not standard, standardizing it on demand.
-5. If the FA is not complete deterministic, obtaining an equivalent complete deterministic FA. 
-6. Calculating the equivalent minimal FA. 
-7. Testing word recognition. 
-8. Creating an automaton recognizing the complementary language and testing word recognition on that automaton.
+1. Read a FA from a text file, then store it in memory.
+2. Display it in terminal.
+3. Display other types of information: is the FA deterministic? deterministic and complete? standard?
+4. Standardize the FA.
+5. Determinize and complete the FA. 
+6. Minimize the FA. 
+7. Test word recognition. 
+8. Create a FA recognizing the complementary language.
 ## Data format
 Example of the text file:<br>
 2<br>
