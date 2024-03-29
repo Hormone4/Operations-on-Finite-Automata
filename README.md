@@ -22,7 +22,7 @@ Example of the text file:<br>
 2a3<br>
 3a4<br>
 <br>
-Format needed for the data:<br>
+Format of the data after extraction:<br>
 L = ["a","b"]<br>
 E = [" ->", "   ", "   ", "   ", "<- "]   # " ->" is initial, "   " is neither, "<->" is both, "<- " is final<br>
 A = [[0, [0,1], 0],<br>
