@@ -23,10 +23,14 @@
 3a4<br>
 <br>
 ### Format of the data after extraction:<br>
-L = ["a","b"]   # Alphabet<br>
-E = [" ->", "   ", "   ", "   ", "<- "]   # List of initial/final states in order (" ->" is initial, "<- " is final, "   " is neither, "<->" is both)<br>
+L = ["a","b"]
+E = [" ->", "   ", "   ", "   ", "<- "]
 A = [[0, [0,1], 0],<br>
      [1, -1, 2],<br>
      [2, 3, -1],<br>
      [3, 4, -1],<br>
-     [4, -1, -1]]   # -1 is for no transition 'P' is for garbage state<br> 
+     [4, -1, -1]]<br> 
+
+- L is the alphabet
+- E is the list of initial/final states in order (" ->" is initial, "<- " is final, "   " is neither, "<->" is both)
+- A is the automaton. The first column of A are the states of A, the other columns are the targets of the state according to the alphabet. -1 is for no transition 'P' is for garbage state.
