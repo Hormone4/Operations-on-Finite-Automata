@@ -24,9 +24,7 @@ print("\nStandard, complete, deterministic:",S,"\n")
 
 #automata_type(A,L,E)
 
-A_standard =standardize(A,L,E)
-
-
+A_standard,E =standardize(A,L,E)
 
 
 print("Standard automaton:", A)

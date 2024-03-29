@@ -92,17 +92,16 @@ def automata_type(M, L, E) :   #defines type of the automata
             if count >1:
                 deterministic = 0
                 break
-    S = [standard,complete,deterministic]
+    S = [standard,complete,deterministic] # return the types as a list for later use
     return S
-    # we may want to return the arguments as a list to use it later
 
 
 
 
 def standardize(M, L, E):
-    new_entry = []
-    for i in range(0,len(L)+1): #creation of the new starting point of the automaton
-        new_entry.append(M[0][i])
+    i = []
+    for m in range(0,len(L)+1): #creation of the new starting point of the automaton
+        i.append(M[0][m])
     for k in M:
         for j in range(0,len(L)+1):
             if isinstance(k[j],list): #we check if the automaton may not be deterministic
@@ -110,8 +109,14 @@ def standardize(M, L, E):
                     l += 1
             elif k[j] != -1:
                 k[j] +=1
-    M.insert(0,new_entry) #insertion of the new starting point
-    return(M)
+    if E[0] == " ->" :
+        E[0] = "   "
+    else :
+        E[0] = "<- "
+    E.insert(0," ->") #update of the state matrice
+    M.insert(0,i) #insertion of the new starting point
+
+    return(M,E)
 
 
 
