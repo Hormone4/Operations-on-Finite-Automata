@@ -116,6 +116,9 @@ def standardize(M, L, E,data): #only works for single entry
             else:
                 for y in M[x][m]:
                     i[m].append(y)
+    for z in range(1, len(L)+1): # remove unnecessary -1
+        if len(i[z]) > 1 and -1 in i[z]:
+            i[z] = [i for i in i[z] if i!= -1]
     E.insert(0," ->") #update of the state matrice
     M.insert(0,i) #insertion of the new starting point
 
