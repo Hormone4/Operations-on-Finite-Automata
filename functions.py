@@ -96,31 +96,30 @@ def automata_type(M, L, E) :   #defines type of the automata
     return S
 
 
-
-
-def standardize(M, L, E):
-    i = []
-    for m in range(0,len(L)+1): #creation of the new starting point of the automaton
-        i.append(M[0][m])
-    for k in M:
-        for j in range(0,len(L)+1):
-            if isinstance(k[j],list): #we check if the automaton may not be deterministic
-                for l in k[j]:
-                    l += 1
-            #elif k[j] != -1:
-            #    k[j] +=1
-    if E[0] == " ->" :
-        E[0] = "   "
-    else :
-        E[0] = "<- "
+def standardize(M, L, E,data): #only works for single entry
+    F = []
+    for p in range(2, (ord(data[2][0]) - 48) * 2 + 1):
+        if data[2][p] != " ":
+            F.append(ord(data[2][p]) - 48)
+    i = ["i"]
+    for x in F:
+        if E[x] == "<->" :
+            E[x] = "<- "
+        else :
+            E[x] = "   "
+        print(x)
+        for m in range(1,len(L)+1): #creation of the new starting point of the automaton
+            if len(i) != len(L)+1:
+                i.append([])   #check not empty at the end
+            if not isinstance(M[x][m],list):
+                i[m].append(M[x][m])
+            else:
+                for y in M[x][m]:
+                    i[m].append(y)
     E.insert(0," ->") #update of the state matrice
     M.insert(0,i) #insertion of the new starting point
-    M[0][0] = 'i'
 
     return(M,E)
-
-
-
 
 
 if __name__ == "__main__":
