@@ -11,7 +11,7 @@ def minimizeReal(A, L, partition0, letter='@'):
             break
     if singletons:
         print("The partition is made only of singletons.\nThe automaton was already minimal.")
-        return A
+        return A, L
     
     # If not, study the states
     else:
@@ -128,6 +128,7 @@ def minimize(A, L, E):
         #complete(A, L, E)
         #determinize(A, L, E)
         #minimize(A, L, E)
+        return A, E
 
 
 

@@ -5,7 +5,7 @@ from minimize import *
 
 
 def displayMenu(A, L, E):
-    print("\n\n")
+    print("")
     print("┌──────────────────────────┐")
     print("│   AUTOMATON              │")
     print("└──────────────────────────┘")
@@ -43,22 +43,28 @@ def menu(A, L, E, data):
                 print(i,"no")
 
     elif choice == '3':
-        A, E = standardize(A,L,E,data)
-        displayMenu(A, L, E)
+        if automata_type(A,L,E)[0] == 1:
+            displayMenu(A, L, E)
+            print("Automaton is already standard.")
+        else:
+            A, E = standardize(A,L,E,data)
+            print("Standard equivalent automaton:")
+            displayMenu(A, L, E)
         
     elif choice == '4':
-        print("Not implemented yet.")
         #A, E = complete(A,L,E,data)
         displayMenu(A, L, E)
+        print("Not implemented yet.")
         
     elif choice == '5':
-        print("Not implemented yet.")
         #A, E = determinize(A,L,E,data)
         displayMenu(A, L, E)
+        print("Not implemented yet.")
         
     elif choice == '6':
         displayMenu(A, L, E)
-        A, E = minimize(A,L,E,data)
+        #A, E = minimize(A,L,E)
+        minimize(A,L,E)
         
     elif choice == '7':
         exit()
@@ -87,6 +93,27 @@ if __name__ == "__main__":
     #transition matrice
     A = load_transition(data,L)
     #display(A, L, E)
+
+
+
+
+
+    
+    L = ['a', 'b']
+    E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
+    A = [
+        ["02", "01", "12"],
+        ["01", "1", "012"],
+        ["12", "01", "02"],
+        ["012", "01", "012"],
+        ["1", "P", "02"],
+        ["P", "P", "P"]
+        ]
+
+
+
+
+
 
 
     print("┌──────────────────────────┐")
