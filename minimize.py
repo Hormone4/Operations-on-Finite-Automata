@@ -10,8 +10,8 @@ def minimizeReal(A, L, partition0, letter='@'):
             singletons = False
             break
     if singletons:
-        print("Automaton is already minimal.")
-        return
+        print("The partition is made only of singletons.\nThe automaton was already minimal.")
+        return A
     
     # If not, study the states
     else:
@@ -39,11 +39,14 @@ def minimizeReal(A, L, partition0, letter='@'):
                                         en.append(kek)
                 print("Study of", names[namenum]+':')
                 display(el, L)
+                print()
 
             # If the automaton is a singleton, do nothing
             else:
-                print("Study of", names[namenum]+":\n   ", el[0], "singleton")
-            print()
+                #print("Study of", names[namenum]+":\n   ", el[0], "singleton")
+                #print("Study of", names[namenum]+":", el[0], "singleton")
+                pass
+            #print()
 
         # Study the separation of the new automaton
         separation = []
@@ -64,7 +67,7 @@ def minimizeReal(A, L, partition0, letter='@'):
 
         # If there is a separation, create a new partition
         if True in separation:
-            print("There is separation in the studies. We need to create a new partition.")
+            print("There is separation in the studies. We need to create a new partition.\n")
             # Create the new partition
             partition1 = {}
             for i, a in enumerate(study):
@@ -104,9 +107,11 @@ def minimizeReal(A, L, partition0, letter='@'):
 
 
 def minimize(A, L, E):
-    # Automaton needs to be complete deterministic
+    # Check if the automaton is complete deterministic
     type = automata_type(A, L, E)
     if type[1] == 1 and type[2] == 1:
+        
+        # Create the initial partition
         partition = {'T': [], 'NT': []}
         for i, s in enumerate(E):
             if s in ['<->', '<- ']:
@@ -128,7 +133,11 @@ def minimize(A, L, E):
 
 
 def printPartition(partition, num):
-    print("\nPARTITION "+str(num)+":")
+    l = len(str(num))-1
+    if l < 0: l = 0
+    print("┌───────────────────────────"+"─"*l+"┐")
+    print("│   PARTITION "+str(num)+"             "+" "*l+"│")
+    print("└───────────────────────────"+"─"*l+"┘")
 
     # Print the sets of the partition
     print("Sets:")
@@ -140,7 +149,7 @@ def printPartition(partition, num):
         print(" "+i + " = " + s)
 
     # Print the union of the sets of the partition
-    print("Union:")
+    print("Theta:")
     print(' θ'+str(num), end=" = ")
     s = ""
     for i in partition:
@@ -174,7 +183,19 @@ if __name__ == "__main__":
 
     minimize(A, L, E)
 
+    E = [' ->', '   ', '   ', '   ', '<- ', '   ']
+    A = [
+         [0, 1, 0],
+         [1, 'P', 2],
+         [2, 3, 'P'],
+         [3, 4, 'P'],
+         [4, 'P', 'P'],
+         ['P', 'P', 'P']
+        ]
+    print(A)
+    display(A, L, E)
 
+    minimize(A, L, E)
 
 
     #a = 'A'

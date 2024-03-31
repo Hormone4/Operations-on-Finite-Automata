@@ -1,6 +1,15 @@
-# Mainloop
 from loader import *
 from functions import *
+from minimize import *
+from menu import *
+
+
+
+
+
+
+
+# Mainloop
 
 data = load_data('test_automata.txt')  #import data
 print("text file:", data)
@@ -20,19 +29,13 @@ A = load_transition(data,L)
 display(A, L, E)
 
 #type of automata
-
 S = automata_type(A,L,E)
 print("\nStandard, complete, deterministic:",S,"\n")
 
-
-A,E = standardize(A,L,E,data)
-
+#standardize automata
+A, E = standardize(A,L,E,data)
 print("Standard automaton:", A)
 display(A, L, E)
-
-
-
-
 
 
 
