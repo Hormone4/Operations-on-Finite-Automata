@@ -4,7 +4,7 @@ from minimize import *
 
 
 
-def displayMenu(A, L, E):
+def displayInMenu(A, L, E):
     print("")
     print("┌──────────────────────────┐")
     print("│   AUTOMATON              │")
@@ -30,10 +30,10 @@ def menu(A, L, E, data):
     choice = input("Enter your choice: ")
 
     if choice == '1':
-        displayMenu(A, L, E)
+        displayInMenu(A, L, E)
 
     elif choice == '2':
-        displayMenu(A, L, E)
+        displayInMenu(A, L, E)
         S = automata_type(A,L,E)
         sb = ["Standard:","Complete:","Deterministic:"]
         for i in sb:
@@ -44,27 +44,29 @@ def menu(A, L, E, data):
 
     elif choice == '3':
         if automata_type(A,L,E)[0] == 1:
-            displayMenu(A, L, E)
+            displayInMenu(A, L, E)
             print("Automaton is already standard.")
         else:
             A, E = standardize(A,L,E,data)
             print("Standard equivalent automaton:")
-            displayMenu(A, L, E)
+            displayInMenu(A, L, E)
         
     elif choice == '4':
         #A, E = complete(A,L,E,data)
-        displayMenu(A, L, E)
+        displayInMenu(A, L, E)
         print("Not implemented yet.")
         
     elif choice == '5':
         #A, E = determinize(A,L,E,data)
-        displayMenu(A, L, E)
+        displayInMenu(A, L, E)
         print("Not implemented yet.")
         
     elif choice == '6':
-        displayMenu(A, L, E)
-        #A, E = minimize(A,L,E)
-        minimize(A,L,E)
+        displayInMenu(A, L, E)
+        A, E = minimize(A,L,E)
+        #minimize(A,L,E)
+        displayInMenu(A, L, E)
+        print("Equivalent minimal automaton.")
         
     elif choice == '7':
         exit()

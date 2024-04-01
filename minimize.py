@@ -1,7 +1,8 @@
 from functions import display, automata_type
+import copy
 
-
-def minimizeReal(A, L, partition0, letter='@'):
+def minimizeReal(A, L, E, partition0, letter='@'):
+    cop = copy.deepcopy(partition0)
 
     # Check if partition contains only singletons
     singletons = True
@@ -9,9 +10,9 @@ def minimizeReal(A, L, partition0, letter='@'):
         if len(partition0[i]) != 1:
             singletons = False
             break
-    if singletons:
+    if singletons:   # Default case
         print("The partition is made only of singletons.\nThe automaton was already minimal.")
-        return A, L
+        return (A, E)
     
     # If not, study the states
     else:
@@ -33,6 +34,7 @@ def minimizeReal(A, L, partition0, letter='@'):
                 for en in el:
                     for i in A:
                         if i[0] == en[0]:
+                            partition0 = copy.deepcopy(cop)
                             for kek in partition0:
                                 for sh in i[1:]:   # i[1:] because i[0] is the state itself
                                     if sh in partition0[kek]:
@@ -46,7 +48,6 @@ def minimizeReal(A, L, partition0, letter='@'):
                 #print("Study of", names[namenum]+":\n   ", el[0], "singleton")
                 #print("Study of", names[namenum]+":", el[0], "singleton")
                 pass
-            #print()
 
         # Study the separation of the new automaton
         separation = []
@@ -80,7 +81,6 @@ def minimizeReal(A, L, partition0, letter='@'):
                     if sb not in partition1:
                         partition1[sb] = []
                     partition1[sb] += [s[0]]
-
             # Change the keys of the partition to letters
             letter = chr(ord(letter)+1)
             keys_to_change = list(partition1.keys())   # Create a list of the keys you want to change
@@ -90,19 +90,78 @@ def minimizeReal(A, L, partition0, letter='@'):
 
             # Display the new partition
             printPartition(partition1, ord(letter)-64)
-            
-            return minimizeReal(A, L, partition1, letter)
+            return minimizeReal(A, L, E, partition1, letter)
 
-        #print(partition0)
-        # if partition0 == partition1, the automaton is minimized
-        #if equalPartition(partition0, partition1):
-        #    print("Automaton is minimized.")
-        #    # Display the minimized automaton
-        #    return
-        #else:
-        #    print("Automaton is not yet minimal.")
-        #    printPartition(partition1, ord(letter)-64)
-        #    return minimizeReal(A, L, partition1, letter)
+
+
+
+
+
+
+
+
+
+
+
+        # If there is no separation, create the minimized automaton
+        else:
+            print("There is no separation in the studies.")
+            #print(A)
+            print(study)
+            #print(partition0)
+            # Create the minimized automaton
+            Amin = []
+            Emin = []
+            for st in partition0:
+                partition0 = copy.deepcopy(cop)
+                if len(partition0[st]) == 1:
+                    Amin.append(partition0[st])
+                else:
+                    Amin.append([st])
+            
+
+            #cop = copy.deepcopy(partition0)
+            #copy.deepcopy(partition0)
+            for st in Amin:
+                # Check if the state is a set of states in the partition
+                partition0 = copy.deepcopy(cop)
+                partmaster = False
+                for mer in partition0:
+                    if mer == st[0]:
+                        partmaster = True
+                if partmaster == True:
+                    for aut in study:
+                        for set in partition0:
+                            if aut[0][0] in partition0[set]:
+
+                                for tr in aut[0][1:]:
+                                    st.append(tr)
+
+                # If the state is a singleton in the partition
+                else:
+                    for og in A:
+                        if og[0] == st[0]:
+                            for tr in og[1:]:
+                                partition0 = copy.deepcopy(cop)
+                                for set in partition0:
+                                    if tr in partition0[set]:
+                                        if len(partition0[set]) == 1:
+                                            st.append(tr)
+                                        else:
+                                            st.append(set)
+                                        #st.append(set)
+            
+            partition0 = copy.deepcopy(cop)
+            print("Emin",Emin)
+            print("Amin:",Amin)
+            print("partition0:",partition0)
+            #display(Amin, L, Emin)
+            return (Amin, Emin)
+
+
+
+
+
 
 
 
@@ -120,7 +179,7 @@ def minimize(A, L, E):
                 partition['NT'].append(A[i][0])
         
         printPartition(partition, 0)
-        return minimizeReal(A, L, partition)
+        return minimizeReal(A, L, E, partition)
     
     else:
         print("Automaton is not complete deterministic. Cannot be minimized.")
@@ -128,7 +187,13 @@ def minimize(A, L, E):
         #complete(A, L, E)
         #determinize(A, L, E)
         #minimize(A, L, E)
-        return A, E
+        return (A, E)
+
+
+
+
+
+
 
 
 
@@ -184,19 +249,19 @@ if __name__ == "__main__":
 
     minimize(A, L, E)
 
-    E = [' ->', '   ', '   ', '   ', '<- ', '   ']
-    A = [
-         [0, 1, 0],
-         [1, 'P', 2],
-         [2, 3, 'P'],
-         [3, 4, 'P'],
-         [4, 'P', 'P'],
-         ['P', 'P', 'P']
-        ]
-    print(A)
-    display(A, L, E)
-
-    minimize(A, L, E)
+    #E = [' ->', '   ', '   ', '   ', '<- ', '   ']
+    #A = [
+    #     [0, 1, 0],
+    #     [1, 'P', 2],
+    #     [2, 3, 'P'],
+    #     [3, 4, 'P'],
+    #     [4, 'P', 'P'],
+    #     ['P', 'P', 'P']
+    #    ]
+    #print(A)
+    #display(A, L, E)
+    #
+    #minimize(A, L, E)
 
 
     #a = 'A'
@@ -228,4 +293,4 @@ if __name__ == "__main__":
 
 
 
-    input()
+    #input()
