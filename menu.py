@@ -32,6 +32,8 @@ def menu(A, L, E, data):
     if choice == '1':
         displayInMenu(A, L, E)
 
+        menu(A, L, E, data)
+
     elif choice == '2':
         displayInMenu(A, L, E)
         S = automata_type(A,L,E)
@@ -42,6 +44,8 @@ def menu(A, L, E, data):
             else:
                 print(i,"no")
 
+        menu(A, L, E, data)
+
     elif choice == '3':
         if automata_type(A,L,E)[0] == 1:
             displayInMenu(A, L, E)
@@ -50,16 +54,22 @@ def menu(A, L, E, data):
             A, E = standardize(A,L,E,data)
             print("Standard equivalent automaton:")
             displayInMenu(A, L, E)
+
+        menu(A, L, E, data)
         
     elif choice == '4':
         #A, E = complete(A,L,E,data)
         displayInMenu(A, L, E)
         print("Not implemented yet.")
+
+        menu(A, L, E, data)
         
     elif choice == '5':
         #A, E = determinize(A,L,E,data)
         displayInMenu(A, L, E)
         print("Not implemented yet.")
+
+        menu(A, L, E, data)
         
     elif choice == '6':
         displayInMenu(A, L, E)
@@ -67,12 +77,14 @@ def menu(A, L, E, data):
         #minimize(A,L,E)
         displayInMenu(A, L, E)
         print("Equivalent minimal automaton.")
+        menu(A, L, E, data)
         
     elif choice == '7':
         exit()
 
     else:
         print("Invalid choice. Please try again.")
+        menu(A, L, E, data)
 
 
 
@@ -123,5 +135,5 @@ if __name__ == "__main__":
     print("└──────────────────────────┘")
     display(A, L, E)
     print()
-    while True:
-        menu(A, L, E, data)
+
+    menu(A, L, E, data)
