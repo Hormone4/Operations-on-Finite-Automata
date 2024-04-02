@@ -5,7 +5,7 @@ from minimize import *
 
 
 def displayInMenu(A, L, E=None):
-    print("")
+    print()
     print("┌──────────────────────────┐")
     print("│   AUTOMATON              │")
     print("└──────────────────────────┘")
@@ -91,28 +91,22 @@ def menu(A, L, E, data):
 
 
 if __name__ == "__main__":
-    data = load_data('test_automata.txt')  #import data
-    #print("text file:", data)
 
-    #create the language
+    # Read the data from the text file
+    data = load_data('test_automata.txt')
+
+    # Create the language list
     L = load_language(data)
-    #print("\nAlphabet: ", L)
 
-    #terminal and non terminal list
+    # Create the list of terminal / non terminal states
     E = load_state(data)
-    #print("Initial / terminal states:", E)
-    E[2] = " ->"
-    #print("Initial / terminal states:", E)
+    E[2] = " ->"   # for test purposes
 
-    #transition matrice
+    # Create the automaton
     A = load_transition(data,L)
-    #display(A, L, E)
 
 
-
-
-
-    
+    # for test purposes
     L = ['a', 'b']
     E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
     A = [
