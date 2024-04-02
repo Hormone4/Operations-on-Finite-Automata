@@ -1,5 +1,6 @@
 from functions import display, automata_type
-import copy
+import copy   # syntax: cop = copy.deepcopy(partition0)
+
 
 def minimizeReal(A, L, E, partition0, letter='@'):
     cop = copy.deepcopy(partition0)
@@ -45,7 +46,6 @@ def minimizeReal(A, L, E, partition0, letter='@'):
 
             # If the automaton is a singleton, do nothing
             else:
-                #print("Study of", names[namenum]+":\n   ", el[0], "singleton")
                 #print("Study of", names[namenum]+":", el[0], "singleton")
                 pass
 
@@ -93,35 +93,38 @@ def minimizeReal(A, L, E, partition0, letter='@'):
             return minimizeReal(A, L, E, partition1, letter)
 
 
-
-
-
-
-
-
-
-
-
-
         # If there is no separation, create the minimized automaton
         else:
             print("There is no separation in the studies.")
-            #print(A)
-            print(study)
-            #print(partition0)
-            # Create the minimized automaton
+            # Begin the minimized automaton and create the new list of initial/final states
             Amin = []
-            Emin = []
-            for st in partition0:
+            Emin = ["   " for _ in range(len(partition0))]
+            for index, st in enumerate(partition0):
                 partition0 = copy.deepcopy(cop)
                 if len(partition0[st]) == 1:
                     Amin.append(partition0[st])
+                    for i, aut in enumerate(A):
+                        if aut[0] == partition0[st][0]:
+                            Emin[index] = E[i]
                 else:
                     Amin.append([st])
-            
+                    FI = []
+                    for stateaa in partition0[st]:
+                        for i, aut in enumerate(A):
+                            if aut[0] == stateaa:
+                                if E[i] != "   ":
+                                    FI.append(E[i])
+                    if FI == []:
+                        Emin[index] = "   "
+                    else:
+                        if "<->" in FI or "<- " in FI and " ->" in FI:
+                            Emin[index] = "<->"
+                        elif "<- " in FI:
+                            Emin[index] = "<- "
+                        else:
+                            Emin[index] = " ->"
 
-            #cop = copy.deepcopy(partition0)
-            #copy.deepcopy(partition0)
+            # Add the transitions of the new automaton
             for st in Amin:
                 # Check if the state is a set of states in the partition
                 partition0 = copy.deepcopy(cop)
@@ -133,9 +136,12 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                     for aut in study:
                         for set in partition0:
                             if aut[0][0] in partition0[set]:
-
+                                partition0 = copy.deepcopy(cop)
                                 for tr in aut[0][1:]:
-                                    st.append(tr)
+                                    if tr in partition0 and len(partition0[tr]) == 1:
+                                        st.append(partition0[tr][0])
+                                    else:
+                                        st.append(tr)
 
                 # If the state is a singleton in the partition
                 else:
@@ -149,18 +155,8 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                                             st.append(tr)
                                         else:
                                             st.append(set)
-                                        #st.append(set)
-            
-            partition0 = copy.deepcopy(cop)
-            print("Emin",Emin)
-            print("Amin:",Amin)
-            print("partition0:",partition0)
-            #display(Amin, L, Emin)
+
             return (Amin, Emin)
-
-
-
-
 
 
 
@@ -249,48 +245,19 @@ if __name__ == "__main__":
 
     minimize(A, L, E)
 
-    #E = [' ->', '   ', '   ', '   ', '<- ', '   ']
-    #A = [
-    #     [0, 1, 0],
-    #     [1, 'P', 2],
-    #     [2, 3, 'P'],
-    #     [3, 4, 'P'],
-    #     [4, 'P', 'P'],
-    #     ['P', 'P', 'P']
-    #    ]
+    E = [' ->', '   ', '   ', '   ', '<- ', '   ']
+    A = [
+         [0, 1, 0],
+         [1, 'P', 2],
+         [2, 3, 'P'],
+         [3, 4, 'P'],
+         [4, 'P', 'P'],
+         ['P', 'P', 'P']
+        ]
+    
     #print(A)
-    #display(A, L, E)
-    #
-    #minimize(A, L, E)
+    display(A, L, E)
+    
+    minimize(A, L, E)
 
-
-    #a = 'A'
-    ##print(a+1)
-    ## print next character in alphabet
-    #print(chr(ord(a)-1))
-    #print(a)
-    #print(chr(ord(a)+1))
-    #print(chr(ord(a)+2))
-
-    #print("\nTESTS:")
-    #part = {}
-    #if 'T' not in part:
-    #    print("cacaa")
-    #    #part['T'] = []
-    #part['T'] = ['1', 'P']
-    #part['NT'] = ['2', '3', '4']
-    #
-    ## change 'T' to str(i)
-#
-#
-    #for i, s in enumerate(part):
-    #    # change 'T' to str(i)
-    #    print(i, s)
-    #    print(part[s])
-#
-#
-    #print(part)
-
-
-
-    #input()
+    input()

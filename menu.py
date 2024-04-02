@@ -4,7 +4,7 @@ from minimize import *
 
 
 
-def displayInMenu(A, L, E):
+def displayInMenu(A, L, E=None):
     print("")
     print("┌──────────────────────────┐")
     print("│   AUTOMATON              │")
