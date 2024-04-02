@@ -1,6 +1,7 @@
 from loader import *
 from functions import *
-from minimize import *
+from minimization import *
+from recognition import *
 
 
 
@@ -24,10 +25,12 @@ def menu(A, L, E, data):
     print("║ 4. Complete automaton    ║")
     print("║ 5. Determinize automaton ║")
     print("║ 6. Minimize automaton    ║")
-    print("║ 7. Exit                  ║")
+    print("║ 7. Word recognition      ║")
+    print("║ 8. Complementary         ║")
+    print("║ 9. Exit                  ║")
     print("╚══════════════════════════╝")
 
-    choice = input("Enter your choice: ")
+    choice = input("Enter your choice (number): ")
 
     if choice == '1':
         displayInMenu(A, L, E)
@@ -51,35 +54,59 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton is already standard.")
         else:
-            A, E = standardize(A,L,E,data)
+            A, E = standardize(A,L,E,data)          # STANDARDIZE FUNCTION TO BE FIXED
             print("Standard equivalent automaton:")
             displayInMenu(A, L, E)
 
         menu(A, L, E, data)
         
     elif choice == '4':
-        #A, E = complete(A,L,E,data)
-        displayInMenu(A, L, E)
-        print("Not implemented yet.")
+        if automata_type(A,L,E)[1] == 1:
+            displayInMenu(A, L, E)
+            print("Automaton is already complete.")
+        else:
+            #A, E = complete(A,L,E,data)             # COMPLETE FUNCTION HERE
+            displayInMenu(A, L, E)
+            print("Not implemented yet.")
 
         menu(A, L, E, data)
         
     elif choice == '5':
-        #A, E = determinize(A,L,E,data)
-        displayInMenu(A, L, E)
-        print("Not implemented yet.")
+        if automata_type(A,L,E)[2] == 1:
+            displayInMenu(A, L, E)
+            print("Automaton is already deterministic.")
+        else:
+            #A, E = determinize(A,L,E,data)          # DETERMINIZE FUNCTION HERE
+            displayInMenu(A, L, E)
+            print("Not implemented yet.")
 
         menu(A, L, E, data)
         
     elif choice == '6':
         displayInMenu(A, L, E)
         A, E = minimize(A,L,E)
-        #minimize(A,L,E)
         displayInMenu(A, L, E)
         print("Equivalent minimal automaton.")
         menu(A, L, E, data)
-        
+
     elif choice == '7':
+        displayInMenu(A, L, E)
+        word = input("Enter a word to recognize: ")
+        #if recognize(A,L,word):                    # RECOGNIZE FUNCTION HERE
+        #    print("The word is recognized.")
+        #else:
+        #    print("The word is not recognized.")
+        print("Not implemented yet.")
+        menu(A, L, E, data)
+    
+    elif choice == '8':
+        displayInMenu(A, L, E)
+        #A, E = complementary(A,L,E,data)   # COMPLEMENTARY FUNCTION HERE
+        displayInMenu(A, L, E)
+        print("Not implemented yet.")
+        menu(A, L, E, data)
+        
+    elif choice == '9':
         exit()
 
     else:

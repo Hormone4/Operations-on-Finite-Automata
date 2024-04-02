@@ -50,7 +50,6 @@ def display(M, L, E=None):   # L is symbols in the alphabet, E is list of initia
                     print(a.format(" "*m+"-"),end="")
                 else:
                     print(a.format(M[i][j]),end="")
-
             if j == len(M[0])-1:
                 print(" |")
             else:
@@ -122,6 +121,20 @@ def standardize(M, L, E,data): #only works for single entry
     M.insert(0,i) #insertion of the new starting point
 
     return(M,E)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
