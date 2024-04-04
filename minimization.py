@@ -198,7 +198,7 @@ def printPartition(partition, num):
     l = len(str(num))-1
     if l < 0: l = 0
     print("┌───────────────────────────"+"─"*l+"┐")
-    print("│   PARTITION "+str(num)+"             "+" "*l+"│")
+    print("│   PARTITION "+str(num)+"             │")
     print("└───────────────────────────"+"─"*l+"┘")
 
     # Print the sets of the partition
