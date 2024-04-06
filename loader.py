@@ -4,16 +4,16 @@
 def load_data(file):
 
      mylines = []
-     with open (file, 'rt') as myfile:                                   # Open the file given and reads it
-         for myline in myfile:                                           # For each line, stored as myline
-             mylines.append(myline.replace('\n', ''))        # add its contents to mylines and replaces the next line character by nothing
+     with open (file, 'rt') as myfile:                  # Open the file given and reads it
+         for myline in myfile:                          # For each line, stored as myline
+             mylines.append(myline.replace('\n', ''))   # add its contents to mylines and replaces the next line character by nothing
      return mylines
 
 
 def load_language(data):
     L = []
     i=5
-    while len(L) != (ord(data[0])-48):                                  #we use while to not go through the whole list
+    while len(L) != (ord(data[0])-48):                  # we use while to not go through the whole list
         if data[i][1] not in L:
             L.append(data[i][1])
         i += 1
@@ -24,7 +24,7 @@ def load_state(data):
 
     E = []
 
-    for i in range(0, ord(data[1]) - 48):                               #convert string to number
+    for i in range(0, ord(data[1]) - 48):                # convert string to number
         if str(i) in (data[2][1:]) and str(i) in (data[3][1:]):
             E.append("<->")
         elif str(i) in (data[2][1:]):
