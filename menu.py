@@ -149,12 +149,5 @@ if __name__ == "__main__":
 
 
 
-
-
-    print("┌──────────────────────────┐")
-    print("│   AUTOMATON              │")
-    print("└──────────────────────────┘")
-    display(A, L, E)
-    print()
-
+    displayInMenu(A, L, E)
     menu(A, L, E, data)

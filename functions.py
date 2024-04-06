@@ -3,7 +3,7 @@ def display(M, L, E=None):   # L is symbols in the alphabet, E is list of initia
     # The goal is to find m, the length of the longest element in the matrix M
     #print()
     if E == None:   # if there is no list of initial/final states
-        E = ["   " for i in range(len(M))]
+        E = ["   " for _ in range(len(M))]
     
     # if the matrix contains a list aka if the automaton is non-deterministic
     contains_list = False
