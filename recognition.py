@@ -28,22 +28,12 @@ if __name__ == "__main__":
 
     # Create the list of terminal / non terminal states
     E = load_state(data)
+    E[1] = "<->"
 
     # Create the automaton
     A = load_transition(data,L)
 
 
-    # for test purposes
-    L = ['a', 'b']
-    E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
-    A = [
-        ["02", "01", "12"],
-        ["01", "1", "012"],
-        ["12", "01", "02"],
-        ["012", "01", "012"],
-        ["1", "P", "02"],
-        ["P", "P", "P"]
-        ]
 
     display(A, L, E)
 
