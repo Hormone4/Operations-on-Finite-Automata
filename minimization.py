@@ -11,7 +11,7 @@ def minimizeReal(A, L, E, partition0, letter='@'):
         if len(partition0[i]) != 1:
             singletons = False
             break
-    if singletons:   # Default case
+    if singletons:   # Default case of the recursive function
         print("The partition is made only of singletons.\nThe automaton was already minimal.")
         return (A, E)
     
@@ -66,7 +66,7 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                 else:
                     separation.append(True)
 
-        # If there is a separation, create a new partition
+        # If there is separation, create a new partition
         if True in separation:
             print("There is separation in the studies. We need to create a new partition.\n")
             # Create the new partition
@@ -83,8 +83,8 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                     partition1[sb] += [s[0]]
             # Change the keys of the partition to letters
             letter = chr(ord(letter)+1)
-            keys_to_change = list(partition1.keys())   # Create a list of the keys you want to change
-            for i, old_key in enumerate(keys_to_change):   # Use a for loop to replace the keys
+            keys_to_change = list(partition1.keys())   # Create a list of the keys we want to change
+            for i, old_key in enumerate(keys_to_change):   # Replace the keys
                 new_key = letter+str(i)
                 partition1[new_key] = partition1.pop(old_key)
 
@@ -96,7 +96,7 @@ def minimizeReal(A, L, E, partition0, letter='@'):
         # If there is no separation, create the minimized automaton
         else:
             print("There is no separation in the studies.")
-            # Begin the minimized automaton and create the new list of initial/final states
+            # Add the states of the minimized automaton and create the new list of initial/final states
             Amin = []
             Emin = ["   " for _ in range(len(partition0))]
             for index, st in enumerate(partition0):
@@ -132,6 +132,7 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                 for mer in partition0:
                     if mer == st[0]:
                         partmaster = True
+                # If it is
                 if partmaster == True:
                     for aut in study:
                         for set in partition0:
@@ -143,7 +144,7 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                                     else:
                                         st.append(tr)
 
-                # If the state is a singleton in the partition
+                # Otherwise, if the state is a singleton in the partition
                 else:
                     for og in A:
                         if og[0] == st[0]:
@@ -155,7 +156,7 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                                             st.append(tr)
                                         else:
                                             st.append(set)
-
+            # Return the minimal automaton
             return (Amin, Emin)
 
 
@@ -179,7 +180,7 @@ def minimize(A, L, E):
     
     else:
         print("Automaton is not complete deterministic. Cannot be minimized.")
-        # To be replaced by:
+        # To be replaced (or not) by:
         #complete(A, L, E)
         #determinize(A, L, E)
         #minimize(A, L, E)
@@ -241,9 +242,14 @@ if __name__ == "__main__":
         ["P", "P", "P"]
         ]
     
+    print("\nAutomaton:")
     display(A, L, E)
-
-    minimize(A, L, E)
+    
+    A, E = minimize(A, L, E)
+    print("\nEquivalent minimal automaton:")
+    display(A, L, E)
+    
+    for _ in range(10): print()
 
     E = [' ->', '   ', '   ', '   ', '<- ', '   ']
     A = [
@@ -256,8 +262,11 @@ if __name__ == "__main__":
         ]
     
     #print(A)
+    print("\nAutomaton:")
     display(A, L, E)
     
-    minimize(A, L, E)
+    A, E = minimize(A, L, E)
+    print("\nEquivalent minimal automaton:")
+    display(A, L, E)
 
     input()
