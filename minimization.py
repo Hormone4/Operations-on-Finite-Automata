@@ -163,28 +163,18 @@ def minimizeReal(A, L, E, partition0, letter='@'):
 
 
 def minimize(A, L, E):
-    # Check if the automaton is complete deterministic
-    type = automata_type(A, L, E)
-    if type[1] == 1 and type[2] == 1:
         
-        # Create the initial partition
-        partition = {'T': [], 'NT': []}
-        for i, s in enumerate(E):
-            if s in ['<->', '<- ']:
-                partition['T'].append(A[i][0])
-            else:
-                partition['NT'].append(A[i][0])
-        
-        printPartition(partition, 0)
-        return minimizeReal(A, L, E, partition)
+    # Create the initial partition
+    partition = {'T': [], 'NT': []}
+    for i, s in enumerate(E):
+        if s in ['<->', '<- ']:
+            partition['T'].append(A[i][0])
+        else:
+            partition['NT'].append(A[i][0])
     
-    else:
-        print("Automaton is not complete deterministic. Cannot be minimized.")
-        # To be replaced (or not) by:
-        #complete(A, L, E)
-        #determinize(A, L, E)
-        #minimize(A, L, E)
-        return (A, E)
+    printPartition(partition, 0)
+    return minimizeReal(A, L, E, partition)
+    
 
 
 

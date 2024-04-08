@@ -54,7 +54,7 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton is already standard.")
         else:
-            A, E = standardize(A,L,E,data)          # STANDARDIZE FUNCTION TO BE FIXED
+            A, E = standardize(A,L,E)          # STANDARDIZE FUNCTION TO BE FIXED
             print("Standard equivalent automaton:")
             displayInMenu(A, L, E)
 
@@ -84,9 +84,15 @@ def menu(A, L, E, data):
         
     elif choice == '6':
         displayInMenu(A, L, E)
-        A, E = minimize(A,L,E)
-        displayInMenu(A, L, E)
-        print("Equivalent minimal automaton.")
+        # Check if the automaton is complete deterministic
+        type = automata_type(A, L, E)
+        if type[1] == 1 and type[2] == 1:
+            A, E = minimize(A,L,E)
+            displayInMenu(A, L, E)
+            print("Equivalent minimal automaton.")
+        
+        else:
+            print("Automaton is not complete deterministic. Cannot be minimized.")
         menu(A, L, E, data)
 
     elif choice == '7':
@@ -134,16 +140,16 @@ if __name__ == "__main__":
 
 
     # for test purposes
-    L = ['a', 'b']
-    E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
-    A = [
-        ["02", "01", "12"],
-        ["01", "1", "012"],
-        ["12", "01", "02"],
-        ["012", "01", "012"],
-        ["1", "P", "02"],
-        ["P", "P", "P"]
-        ]
+    #L = ['a', 'b']
+    #E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
+    #A = [
+    #    ["02", "01", "12"],
+    #    ["01", "1", "012"],
+    #    ["12", "01", "02"],
+    #    ["012", "01", "012"],
+    #    ["1", "P", "02"],
+    #    ["P", "P", "P"]
+    #    ]
 
 
 
