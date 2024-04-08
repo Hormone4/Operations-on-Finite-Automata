@@ -75,12 +75,12 @@ def automata_type(M, L, E) :   #defines type of the automata
                 for k in i[j] :
                     if k == -1 :
                         complete = 0
-                    if k == 0 :
+                    if k == M[0][0]:
                         standard = 0
             else :
                 if i[j] == -1:
                     complete = 0
-                if i[j] == 0:
+                if i[j] == M[0][0]:
                     standard = 0
     if deterministic == 1 :
         count = 0
@@ -89,6 +89,7 @@ def automata_type(M, L, E) :   #defines type of the automata
                 count += 1
             if count >1:
                 deterministic = 0
+                standard = 0
                 break
     S = [standard,complete,deterministic] # return the types as a list for later use
     return S
