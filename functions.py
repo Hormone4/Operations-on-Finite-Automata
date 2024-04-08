@@ -98,7 +98,7 @@ def automata_type(M, L, E) :   #defines type of the automata
 def standardize(M, L, E): #only works for single entry
     F = []
     for k in range(0,len(E)):
-        if E[k]==" ->":
+        if E[k]==" ->" or E[k]=="<->":
             F.append(k)
     i = ["i"]
     for x in F:
@@ -106,7 +106,6 @@ def standardize(M, L, E): #only works for single entry
             E[x] = "<- "
         else :
             E[x] = "   "
-        print(x)
         for m in range(1,len(L)+1): #creation of the new starting point of the automaton
             if len(i) != len(L)+1:
                 i.append([])   #check not empty at the end
@@ -117,7 +116,7 @@ def standardize(M, L, E): #only works for single entry
                     i[m].append(y)
     for z in range(1, len(L)+1): # remove unnecessary -1
         if len(i[z]) > 1 and -1 in i[z]:
-            i[z] = [i for i in i[z] if i!= -1]
+            i[z] = [item for item in i[z] if item!= -1]
     E.insert(0," ->") #update of the state matrice
     M.insert(0,i) #insertion of the new starting point
 
