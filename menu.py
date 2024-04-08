@@ -54,9 +54,9 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton is already standard.")
         else:
-            A, E = standardize(A,L,E)          # STANDARDIZE FUNCTION TO BE FIXED
-            print("Standard equivalent automaton:")
+            A, E = standardize(A,L,E)
             displayInMenu(A, L, E)
+            print("Standard equivalent automaton.")
 
         menu(A, L, E, data)
         
@@ -65,7 +65,7 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton is already complete.")
         else:
-            #A, E = complete(A,L,E,data)             # COMPLETE FUNCTION HERE
+            #A, E = complete(A,L,E,data)                      # COMPLETE FUNCTION HERE
             displayInMenu(A, L, E)
             print("Not implemented yet.")
 
@@ -76,7 +76,7 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton is already deterministic.")
         else:
-            #A, E = determinize(A,L,E,data)          # DETERMINIZE FUNCTION HERE
+            #A, E = determinize(A,L,E,data)                      # DETERMINIZE FUNCTION HERE
             displayInMenu(A, L, E)
             print("Not implemented yet.")
 
@@ -90,7 +90,6 @@ def menu(A, L, E, data):
             A, E = minimize(A,L,E)
             displayInMenu(A, L, E)
             print("Equivalent minimal automaton.")
-        
         else:
             print("Automaton is not complete deterministic. Cannot be minimized.")
         menu(A, L, E, data)
@@ -98,7 +97,7 @@ def menu(A, L, E, data):
     elif choice == '7':
         displayInMenu(A, L, E)
         word = input("Enter a word to recognize: ")
-        #if recognize(A,L,word):                    # RECOGNIZE FUNCTION HERE
+        #if recognize(A,L,word):                              # RECOGNIZE FUNCTION HERE
         #    print("The word is recognized.")
         #else:
         #    print("The word is not recognized.")
@@ -107,7 +106,7 @@ def menu(A, L, E, data):
     
     elif choice == '8':
         displayInMenu(A, L, E)
-        #A, E = complementary(A,L,E,data)   # COMPLEMENTARY FUNCTION HERE
+        #A, E = complementary(A,L,E,data)                # COMPLEMENTARY FUNCTION HERE
         displayInMenu(A, L, E)
         print("Not implemented yet.")
         menu(A, L, E, data)
@@ -138,19 +137,20 @@ if __name__ == "__main__":
     # Create the automaton
     A = load_transition(data,L)
 
-
+    
+    """
     # for test purposes
-    #L = ['a', 'b']
-    #E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
-    #A = [
-    #    ["02", "01", "12"],
-    #    ["01", "1", "012"],
-    #    ["12", "01", "02"],
-    #    ["012", "01", "012"],
-    #    ["1", "P", "02"],
-    #    ["P", "P", "P"]
-    #    ]
-
+    L = ['a', 'b']
+    E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
+    A = [
+        ["02", "01", "12"],
+        ["01", "1", "012"],
+        ["12", "01", "02"],
+        ["012", "01", "012"],
+        ["1", "P", "02"],
+        ["P", "P", "P"]
+        ]
+    """
 
 
 

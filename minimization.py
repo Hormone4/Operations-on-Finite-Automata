@@ -29,19 +29,19 @@ def minimizeReal(A, L, E, partition0, letter='@'):
             targets = []
 
         # For each new automata in the list
-        for namenum, el in enumerate(study):
+        for namenum, aut in enumerate(study):
             # Fill the new automata with transitions to the sets in the partition
-            if len(el) > 1:
-                for en in el:
-                    for i in A:
-                        if i[0] == en[0]:
+            if len(aut) > 1:
+                for st1 in aut:
+                    for stf in A:
+                        if stf[0] == st1[0]:
                             partition0 = copy.deepcopy(cop)
-                            for kek in partition0:
-                                for sh in i[1:]:   # i[1:] because i[0] is the state itself
-                                    if sh in partition0[kek]:
-                                        en.append(kek)
+                            for sett in partition0:
+                                for sh in stf[1:]:   # i[1:] because i[0] is the state itself
+                                    if sh in partition0[sett]:
+                                        st1.append(sett)
                 print("Study of", names[namenum]+':')
-                display(el, L)
+                display(aut, L)
                 print()
 
             # If the automaton is a singleton, do nothing
@@ -220,6 +220,9 @@ def printPartition(partition, num):
 
 if __name__ == "__main__":
     from functions import *
+    
+    
+    """
     print()
     L = ['a', 'b']
     E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
@@ -258,5 +261,27 @@ if __name__ == "__main__":
     A, E = minimize(A, L, E)
     print("\nEquivalent minimal automaton:")
     display(A, L, E)
+    
+    
+    
+    
+    
+    for _ in range(10): print()
+    """
+
+    A = [['i', ['01'], ['12']], ['02', '01', '12'], ['01', '1', '012'], ['12', '01', '02'], ['012', '01', '012'], ['1', 'P', '02'], ['P', 'P', 'P']]
+    E = [' ->', '<- ', '<- ', '<- ', '<- ', '<- ', '   ']
+    L = ['a', 'b']
+    
+    print("\nAutomaton:")
+    display(A, L, E)
+    
+    A, E = minimize(A, L, E)
+    print("\nEquivalent minimal automaton:")
+    display(A, L, E)
+    
+    
+    
+    
 
     input()
