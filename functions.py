@@ -71,7 +71,8 @@ def automata_type(M, L, E) :   #defines type of the automata
     for i in M :
         for j in range(1, len(L)+1) :
             if isinstance(i[j], list) :
-                deterministic = 0
+                if len(i[j] )> 1:
+                    deterministic = 0
                 for k in i[j] :
                     if k == -1 :
                         complete = 0
