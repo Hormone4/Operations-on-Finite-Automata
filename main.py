@@ -1,6 +1,6 @@
 from loader import *
 from functions import *
-from minimize import *
+from minimization import *
 from menu import *
 
 
@@ -33,7 +33,7 @@ S = automata_type(A,L,E)
 print("\nStandard, complete, deterministic:",S,"\n")
 
 #standardize automata
-A, E = standardize(A,L,E,data)
+A, E = standardize(A,L,E)
 print("Standard automaton:", A)
 display(A, L, E)
 

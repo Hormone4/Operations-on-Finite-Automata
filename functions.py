@@ -94,11 +94,11 @@ def automata_type(M, L, E) :   #defines type of the automata
     return S
 
 
-def standardize(M, L, E,data): #only works for single entry
+def standardize(M, L, E): #only works for single entry
     F = []
-    for p in range(2, (ord(data[2][0]) - 48) * 2 + 1):
-        if data[2][p] != " ":
-            F.append(ord(data[2][p]) - 48)
+    for k in range(0,len(E)):
+        if E[k]==" ->":
+            F.append(k)
     i = ["i"]
     for x in F:
         if E[x] == "<->" :
