@@ -51,6 +51,7 @@ def minimizeReal(A, L, E, partition0, letter='@'):
 
         # Study the separation of the new automaton
         separation = []
+        # Create a list of booleans to check if there is separation in the studies
         for a in study:
             if len(a) == 1:
                 separation.append(False)
@@ -71,15 +72,20 @@ def minimizeReal(A, L, E, partition0, letter='@'):
             print("There is separation in the studies. We need to create a new partition.\n")
             # Create the new partition
             partition1 = {}
+            # The keys of the partitions are the patterns of the transitions of the automata
             for i, a in enumerate(study):
                 for s in a:
+                    # sb is the pattern of the transitions of the automata
                     sb = ""
                     for sh in s[1:]:
                         sb += str(sh)
                     if sb == "":
                         sb = str(i)
+                    sb += str(i)   # Differentiate same patterns but from different automaton
+                    # If the pattern is not in the partition, add it
                     if sb not in partition1:
                         partition1[sb] = []
+                    # Group the states of the automata with the same transition pattern
                     partition1[sb] += [s[0]]
             # Change the keys of the partition to letters
             letter = chr(ord(letter)+1)
@@ -96,8 +102,9 @@ def minimizeReal(A, L, E, partition0, letter='@'):
         # If there is no separation, create the minimized automaton
         else:
             print("There is no separation in the studies.")
-            # Add the states of the minimized automaton and create the new list of initial/final states
+            # Create an automaton with the states of the partition (no transitions yet)
             Amin = []
+            # Create the new list of initial/final states
             Emin = ["   " for _ in range(len(partition0))]
             for index, st in enumerate(partition0):
                 partition0 = copy.deepcopy(cop)
@@ -269,7 +276,7 @@ if __name__ == "__main__":
     for _ in range(10): print()
     """
 
-    A = [['i', ['01'], ['12']], ['02', '01', '12'], ['01', '1', '012'], ['12', '01', '02'], ['012', '01', '012'], ['1', 'P', '02'], ['P', 'P', 'P']]
+    A = [['i', '01', '12'], ['02', '01', '12'], ['01', '1', '012'], ['12', '01', '02'], ['012', '01', '012'], ['1', 'P', '02'], ['P', 'P', 'P']]
     E = [' ->', '<- ', '<- ', '<- ', '<- ', '<- ', '   ']
     L = ['a', 'b']
     
@@ -279,7 +286,6 @@ if __name__ == "__main__":
     A, E = minimize(A, L, E)
     print("\nEquivalent minimal automaton:")
     display(A, L, E)
-    
     
     
     
