@@ -68,6 +68,10 @@ def automata_type(M, L, E) :   #defines type of the automata
     complete = 1
     deterministic = 1
     standard = 1
+    if " ->" in E :
+        finder = E.index(" ->")
+    elif "<->" in E :
+        finder = E.index("<->")
     for i in M :
         for j in range(1, len(L)+1) :
             if isinstance(i[j], list) :
@@ -76,17 +80,17 @@ def automata_type(M, L, E) :   #defines type of the automata
                 for k in i[j] :
                     if k == -1 :
                         complete = 0
-                    if k == M[0][0]:
+                    if k == M[finder][0]:
                         standard = 0
             else :
                 if i[j] == -1:
                     complete = 0
-                if i[j] == M[0][0]:
+                if i[j] == M[finder][0]:
                     standard = 0
     if deterministic == 1 :
         count = 0
         for m in E:
-            if m == " ->":
+            if m == " ->" or m == "<->":
                 count += 1
             if count >1:
                 deterministic = 0

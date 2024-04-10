@@ -138,7 +138,7 @@ if __name__ == "__main__":
     A = load_transition(data,L)
 
     
-    """
+
     # for test purposes
     L = ['a', 'b']
     E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
@@ -150,7 +150,7 @@ if __name__ == "__main__":
         ["1", "P", "02"],
         ["P", "P", "P"]
         ]
-    """
+
 
 
 
