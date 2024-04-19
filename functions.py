@@ -138,6 +138,19 @@ def complete(M, E, L):
     return M
 
 
+def complementary(M, L, E):
+    print(E)
+    S = automata_type(M, L, E)
+    if S[1] == 1:
+        M = complete(M, E, L)
+    for i in range(len(E)):
+        if E[i]== '   ':
+            E[i] = '<- '
+        elif E[i]== ' ->':
+            E[i]= '<->'
+        else:
+            E[i] = '   '
+    return M, E
 
 
 

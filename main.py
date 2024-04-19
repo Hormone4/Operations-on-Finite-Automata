@@ -37,7 +37,10 @@ A, E = standardize(A,L,E)
 print("Standard automaton:", A)
 display(A, L, E)
 
-
+#get the complementary automaton
+A, E = complementary(A, L, E)
+print("Complementary automaton")
+display(A, L, E)
 
 
 
