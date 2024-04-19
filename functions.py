@@ -130,6 +130,12 @@ def standardize(M, L, E): #only works for single entry
     return(M,E)
 
 
+def complete(M, E, L):
+    for i in M:
+        for j in range(1, len(L) + 1):
+            if i[j] == -1:
+                i[j] = "P"
+    return M
 
 
 
