@@ -65,9 +65,9 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton is already complete.")
         else:
-            #A, E = complete(A,L,E,data)                      # COMPLETE FUNCTION HERE
+            A = complete(A, E, L)
             displayInMenu(A, L, E)
-            print("Not implemented yet.")
+            print("Equivalent complete automaton.")
 
         menu(A, L, E, data)
         
@@ -105,11 +105,16 @@ def menu(A, L, E, data):
         menu(A, L, E, data)
     
     elif choice == '8':
-        displayInMenu(A, L, E)
-        #A, E = complementary(A,L,E,data)                # COMPLEMENTARY FUNCTION HERE
-        displayInMenu(A, L, E)
-        print("Not implemented yet.")
+        # Check if the automaton is complete deterministic
+        type = automata_type(A, L, E)
+        if type[1] == 1 and type[2] == 1:
+            A, E = complementary(A, L, E)
+            displayInMenu(A, L, E)
+            print("Automaton recognizing the complementary language.")
+        else:
+            print("Automaton is not complete deterministic.\nCannot find the automaton recognizing the complementary language.")
         menu(A, L, E, data)
+
         
     elif choice == '9':
         exit()
@@ -125,14 +130,14 @@ def menu(A, L, E, data):
 if __name__ == "__main__":
 
     # Read the data from the text file
-    data = load_data('test_automata.txt')
+    data = load_data('Int1-2-Test-automaton/Int1-2-15.txt')
 
     # Create the language list
     L = load_language(data)
 
     # Create the list of terminal / non terminal states
     E = load_state(data)
-    E[2] = " ->"   # for test purposes
+    #E[2] = " ->"   # for test purposes
 
     # Create the automaton
     A = load_transition(data,L)
@@ -140,6 +145,7 @@ if __name__ == "__main__":
     
 
     # for test purposes
+    
     L = ['a', 'b']
     E = ['<->', '<- ', '<- ', '<- ', '<- ', '   ']
     A = [
@@ -150,7 +156,7 @@ if __name__ == "__main__":
         ["1", "P", "02"],
         ["P", "P", "P"]
         ]
-
+    
 
 
 
