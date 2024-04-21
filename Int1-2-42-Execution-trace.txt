@@ -154,7 +154,7 @@ There is no separation in the studies.
 <-   1 | B3 | B3 | B2 |
  ->  i | B3 | B3 | B2 |
     B2 | B2 | B2 | B2 |
-    B3 | B2 | B2 | B2 |
+    B3 |  1 | B2 | B2 |
 Equivalent minimal automaton.
 
 
@@ -167,7 +167,7 @@ Equivalent minimal automaton.
 <-   1 | B3 | B3 | B2 |
  ->  i | B3 | B3 | B2 |
     B2 | B2 | B2 | B2 |
-    B3 | B2 | B2 | B2 |
+    B3 |  1 | B2 | B2 |
 Enter a word : 
 abba
 The word is not recognized.
@@ -191,7 +191,7 @@ The word is not recognized.
      1 | B3 | B3 | B2 |
 <->  i | B3 | B3 | B2 |
 <-  B2 | B2 | B2 | B2 |
-<-  B3 | B2 | B2 | B2 |
+<-  B3 |  1 | B2 | B2 |
 Automaton recognizing the complementary language.
 
 

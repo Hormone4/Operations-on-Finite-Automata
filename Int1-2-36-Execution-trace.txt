@@ -150,3 +150,64 @@ There is no separation in the studies.
 | AUTOMATON |
 +-----------+
           a    b    
+<-  B0 | B1 |  1 |
+<-  B1 | B0 | B1 |
+<-   1 |  P | B1 |
+ ->  i | B0 | B1 |
+     P |  P |  P |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    
+<-  B0 | B1 |  1 |
+<-  B1 | B0 | B1 |
+<-   1 |  P | B1 |
+ ->  i | B0 | B1 |
+     P |  P |  P |
+Enter a word : 
+abba
+The word is recognized.
+
+Enter a word : 
+aba
+The word is not recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    
+    B0 | B1 |  1 |
+    B1 | B0 | B1 |
+     1 |  P | B1 |
+<->  i | B0 | B1 |
+<-   P |  P |  P |
+Automaton recognizing the complementary language.
+
+
+Enter a word : 
+abba
+The word is not recognized.
+
+Enter a word : 
+aba
+The word is recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+

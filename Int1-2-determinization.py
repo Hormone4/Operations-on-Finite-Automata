@@ -214,19 +214,29 @@ if __name__ == "__main__":
 
     
     L = ["a","b"]
-    E = [" ->", "<- ", "   ", "<- "]
+    """E = [" ->", "<- ", "   ", "<- "]
     A = [
         ["i",[1,3],-1],
         [1,-1,2],
         [2,3,-1],
         [3,-1,-1]
-    ]
+    ]"""
 
+
+
+    E = [" ->", "<- ", "   ", "<- "]
+    A = [
+        [0,0,[0,1]],
+        [1,2,-1],
+        [2,3,3],
+        [3,-1,-1]
+    ]
     
     #A, E = functions.complete(A, E, L)
     functions.display(A, L, E)
 
-    determinize(A,L,E)
+    A,E = determinize(A,L,E)
+    functions.display(A, L, E)
 
     """# L is symbols in the alphabet, E is list of initial/ final states (in order)
     L = ["a","b","c","d"]

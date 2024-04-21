@@ -115,7 +115,7 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                     for i, aut in enumerate(A):
                         if aut[0] == partition0[st][0]:
                             Emin[index] = E[i]
-                elif len(partition0[st]) == 0:
+                elif len(partition0[st]) == 0:   # has to be T NT partition
                     pass
                 else:
                     Amin.append([st])
@@ -135,6 +135,9 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                         else:
                             Emin[index] = " ->"
 
+            """print("Amin:", Amin)
+            print("study:", study)
+            print("partition0:", partition0)"""
             # Add the transitions of the new automaton
             for st in Amin:
                 # Check if the state is a set of states in the partition
@@ -144,13 +147,12 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                     if mer == st[0]:
                         partmaster = True
                 # If it is
-                if partmaster == True:
-                    for aut in study:
-                        for set in partition0:
-                            if aut[0][0] in partition0[set]:
-                                partition0 = copy.deepcopy(cop)
-                                for tr in aut[0][1:]:
-                                    if tr in partition0 and len(partition0[tr]) == 1:
+                if partmaster == True:   # bug somewhere here
+                    for num, aut in enumerate(study):
+                        if str(num) == str(st[0][1]):
+                            for tr in aut[0][1:]:
+                                if tr in partition0:
+                                    if len(partition0[tr]) == 1:
                                         st.append(partition0[tr][0])
                                     else:
                                         st.append(tr)
@@ -294,4 +296,4 @@ if __name__ == "__main__":
     
     
 
-    input()
+    #input()

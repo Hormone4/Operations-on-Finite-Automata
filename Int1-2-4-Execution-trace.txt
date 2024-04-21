@@ -73,3 +73,24 @@ Study of NT:
      P | NT |
 
 There is no separation in the studies.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          
+    NT |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          
+    NT |
+Enter a word : 
+abba

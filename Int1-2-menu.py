@@ -77,7 +77,7 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton is already deterministic.")
         else:
-            A, E = determinization.determinize(A,L,E)                      # DETERMINIZE FUNCTION HERE
+            A, E = determinization.determinize(A,L,E)
             displayInMenu(A, L, E)
             print("Equivalent deterministic automaton.")
 

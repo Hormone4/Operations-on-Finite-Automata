@@ -65,6 +65,23 @@ Equivalent complete automaton.
     5 | P | P |
 <-  6 | P | P |
     P | P | P |
+Automaton is already deterministic.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        b   a   
+ -> 0 | 2 | 5 |
+    1 | 2 | P |
+    2 | P | 3 |
+    3 | P | P |
+    4 | P | 5 |
+    5 | P | P |
+<-  6 | P | P |
+    P | P | P |
 +---------------------------+
 |   PARTITION 0             |
 +---------------------------+
@@ -94,54 +111,4 @@ There is no separation in the studies.
 +-----------+
           b    a    
 <-   6 | NT | NT |
- -> NT | NT | NT |
-Equivalent minimal automaton.
-
-
-
-
-+-----------+
-| AUTOMATON |
-+-----------+
-          b    a    
-<-   6 | NT | NT |
- -> NT | NT | NT |
-Enter a word : 
-abba
-The word is not recognized.
-
-Enter a word : 
-aba
-The word is not recognized.
-
-Enter a word : 
-aac
-Letter not in language detected.
-The word is not recognized.
-
-
-
-
-
-+-----------+
-| AUTOMATON |
-+-----------+
-          b    a    
-     6 | NT | NT |
-<-> NT | NT | NT |
-Automaton recognizing the complementary language.
-
-
-Enter a word : 
-abba
-The word is recognized.
-
-Enter a word : 
-aba
-The word is recognized.
-
-Enter a word : 
-aac
-Letter not in language detected.
-The word is not recognized.
-
+ -> NT |
