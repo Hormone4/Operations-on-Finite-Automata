@@ -13,10 +13,13 @@ def load_data(file):
 def load_language(data):
     L = []
     i=5
-    while len(L) != (ord(data[0])-48):                  # we use while to not go through the whole list
-        if data[i][1] not in L:
-            L.append(data[i][1])
-        i += 1
+    if((ord(data[0])-48) == 0):
+        L.append("None")
+    else :
+        while len(L) != (ord(data[0])-48):                  # we use while to not go through the whole list
+            if data[i][1] not in L:
+                L.append(data[i][1])
+            i += 1
     return L
 
 

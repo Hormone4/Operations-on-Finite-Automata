@@ -120,10 +120,11 @@ def standardize(M, L, E): #only works for single entry
                 for y in M[x][m]:
                     i[m].append(y)
     for z in range(1, len(L)+1): # remove unnecessary -1
-        print(i[z])
         if len(i[z]) == 1 or (len(i[z])==2 and -1 in i[z]) :
-          i[z] = i[z][0]
-          print("len == 1")
+            if i[z][0] != -1 :
+                i[z] = i[z][0]
+            else :
+                i[z] = i[z][1]
         elif len(i[z]) > 1 and -1 in i[z]:
             i[z] = [item for item in i[z] if item!= -1]
     E.insert(0," ->") #update of the state matrice
