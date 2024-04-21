@@ -99,8 +99,10 @@ def menu(A, L, E, data):
         displayInMenu(A, L, E)
         word = ""
         while word != "end":
-            word2 = recognition.read_word(word)
-            if recognition.recognize(A, L, E, word2) : 
+            word = recognition.read_word(word)
+            if word == "end":
+                break
+            elif recognition.recognize(A, L, E, word) : 
                 print("The word is recognized.")
             else:
                 print("The word is not recognized.")
