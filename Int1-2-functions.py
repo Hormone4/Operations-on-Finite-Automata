@@ -128,7 +128,6 @@ def standardize(M, L, E): #only works for single entry
             i[z] = [item for item in i[z] if item!= -1]
     E.insert(0," ->") #update of the state matrice
     M.insert(0,i) #insertion of the new starting point
-    print(M)
     return(M,E)
 
 
