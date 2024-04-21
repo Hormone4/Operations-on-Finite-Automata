@@ -12,13 +12,7 @@ def recognize(A, L, E, word):
             if E[j] == "<->": 
                 print("emptyyyy word recognized")
                 return 1
-    """for i in range (0, len(word)-1): #empty word recognition
-        for j in range (0, len(E)-1):
-            if E[j] == "<->": 
-                if word[i] == " ":
-                    print("mot vide reconnu")
-                    return 1"""
-    if word[0] == " " and all(element == word[0] for element in word):
+    if word[0] == " " and all(element == word[0] for element in word): #empty word recognition
         print("mot vide reconnu")
         return 1
 
@@ -64,22 +58,17 @@ def recognize(A, L, E, word):
             current_letter = L.index(word[j]) + 1 #gives the index in the L list of the current letter   
             not_doublons = [] #this list doesn't contain the duplicates
             next_states = []
+            
             for element in states:
+                for i, linee in enumerate(A):   # Convert the state into its index in the automaton
+                    if element == linee[0]:
+                        element = i
+                
+                #print(element,states)
                 if element in not_doublons: #avoid repeating the actions if a state has already been computed
                     break
                 else :
-                    """if element == "p" or element == "P":
-                        element = E.index(element)"""
                     
-                    print(states)
-                    for el in range(len(states)):
-                        for i, linee in enumerate(A):
-                            if states[el] == linee[0]:
-                                print("CACA", el,i)
-                                states[el] = i
-                    print(states)
-                    for i in range(5): print()
-
                     outputs = A[element][current_letter]
 
                     if isinstance (outputs, list): #only if it's a list, it permits to have a list containing only integers and no lists 
@@ -87,11 +76,6 @@ def recognize(A, L, E, word):
                             next_states.append(outputs[a])
                             not_doublons.append(element)
                         break
-                    '''if isinstance(outputs, str):
-                        next_states.append(outputs)
-                        not_doublons.append(element)
-                        print("string okkkk")
-                        break'''
 
                     if outputs == -1 : #doesn't go if there is a -1 (-)
                         break 
@@ -106,14 +90,15 @@ def recognize(A, L, E, word):
                 return 0
                 
             if k == len(word)-1: #if we are at the last letter of the word
-                for el in states:
-                    for i, linee in enumerate(A):
-                        if el == linee[0]:
-                            el = i
-                            break
+                
 
                 #for element in states:
                 for element in states:
+                    for i, linee in enumerate(A):
+                        if element == linee[0]:
+                            element = i
+                            break
+                        
                     if E[element]=="<- " or E[element]=="<->": #if the states are <- or <->
                         print("mot reconnu")
                         return 1
