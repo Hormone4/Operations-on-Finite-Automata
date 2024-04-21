@@ -49,6 +49,19 @@ Equivalent complete automaton.
  -> 1 | 2 | 2 |
     2 | P | 0 |
     P | P | P |
+Automaton is already deterministic.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+<-  0 | 0 | 0 |
+ -> 1 | 2 | 2 |
+    2 | P | 0 |
+    P | P | P |
 +---------------------------+
 |   PARTITION 0             |
 +---------------------------+

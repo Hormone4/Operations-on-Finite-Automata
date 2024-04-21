@@ -52,14 +52,16 @@ Automaton is already complete.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      
-<-     0 |    4 |
- ->    1 | 2, 4 |
-       2 |    3 |
-<-     3 |    2 |
-       4 |    5 |
-       5 |    0 |
-Automaton is not complete deterministic. Cannot be minimized.
+          a    
+ ->  1 | 24 |
+    24 | 35 |
+<-  35 | 20 |
+<-  20 | 43 |
+<-  43 | 25 |
+    25 | 30 |
+<-  30 | 42 |
+    42 | 35 |
+Equivalent deterministic automaton.
 
 
 
@@ -67,13 +69,145 @@ Automaton is not complete deterministic. Cannot be minimized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      
-<-     0 |    4 |
- ->    1 | 2, 4 |
-       2 |    3 |
-<-     3 |    2 |
-       4 |    5 |
-       5 |    0 |
+          a    
+ ->  1 | 24 |
+    24 | 35 |
+<-  35 | 20 |
+<-  20 | 43 |
+<-  43 | 25 |
+    25 | 30 |
+<-  30 | 42 |
+    42 | 35 |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {35, 20, 43, 30}
+ NT = {1, 24, 25, 42}
+Theta:
+ theta0 = T U NT
+
+Study of T:
+          a    
+    35 |  T |
+    20 |  T |
+    43 | NT |
+    30 | NT |
+
+Study of NT:
+          a    
+     1 | NT |
+    24 |  T |
+    25 |  T |
+    42 |  T |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {35, 20}
+ A1 = {43, 30}
+ A2 = {1}
+ A3 = {24, 25, 42}
+Theta:
+ theta1 = A0 U A1 U A2 U A3
+
+Study of A0:
+          a    
+    35 | A0 |
+    20 | A1 |
+
+Study of A1:
+          a    
+    43 | A3 |
+    30 | A3 |
+
+Study of A3:
+          a    
+    24 | A0 |
+    25 | A1 |
+    42 | A0 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 2             |
++---------------------------+
+Sets:
+ B0 = {35}
+ B1 = {20}
+ B2 = {43, 30}
+ B3 = {1}
+ B4 = {24, 42}
+ B5 = {25}
+Theta:
+ theta2 = B0 U B1 U B2 U B3 U B4 U B5
+
+Study of B2:
+          a    
+    43 | B5 |
+    30 | B4 |
+
+Study of B4:
+          a    
+    24 | B0 |
+    42 | B0 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 3             |
++---------------------------+
+Sets:
+ C0 = {35}
+ C1 = {20}
+ C2 = {43}
+ C3 = {30}
+ C4 = {1}
+ C5 = {24, 42}
+ C6 = {25}
+Theta:
+ theta3 = C0 U C1 U C2 U C3 U C4 U C5 U C6
+
+Study of C5:
+          a    
+    24 | C0 |
+    42 | C0 |
+
+There is no separation in the studies.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    
+<-  35 | 20 |
+<-  20 | 43 |
+<-  43 | 25 |
+<-  30 | C5 |
+ ->  1 | C5 |
+    C5 | 35 |
+    25 | 30 |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    
+<-  35 | 20 |
+<-  20 | 43 |
+<-  43 | 25 |
+<-  30 | C5 |
+ ->  1 | C5 |
+    C5 | 35 |
+    25 | 30 |
 Enter a word : 
 abba
 Letter not in language detected.
@@ -96,14 +230,15 @@ The word is not recognized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      
-<-     0 |    4 |
- ->    1 | 2, 4 |
-       2 |    3 |
-<-     3 |    2 |
-       4 |    5 |
-       5 |    0 |
-Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
+          a    
+    35 | 20 |
+    20 | 43 |
+    43 | 25 |
+    30 | C5 |
+<->  1 | C5 |
+<-  C5 | 35 |
+<-  25 | 30 |
+Automaton recognizing the complementary language.
 
 
 Enter a word : 

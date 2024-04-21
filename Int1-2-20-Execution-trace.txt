@@ -64,19 +64,14 @@ Equivalent complete automaton.
 +-----------+
 | AUTOMATON |
 +-----------+
-              d      a      b      c      
- ->    i | 2, 2 |    3 |    4 |    5 |
-       0 |    P |    P |    P |    5 |
-       1 |    2 |    P |    P |    P |
-       2 |    P |    3 |    P |    P |
-       3 |    P |    P |    4 |    P |
-       4 |    P |    P |    P |    5 |
-<-     5 |    P |    P |    P |    P |
-       6 |    2 |    P |    P |    P |
-       7 |    P |    3 |    P |    P |
-       8 |    P |    P |    4 |    P |
-       P |    P |    P |    P |    P |
-Automaton is not complete deterministic. Cannot be minimized.
+          d    a    b    c    
+ ->  i | 22 |  3 |  4 |  5 |
+    22 |  P |  3 |  P |  P |
+     3 |  P |  P |  4 |  P |
+     4 |  P |  P |  P |  5 |
+<-   5 |  P |  P |  P |  P |
+     P |  P |  P |  P |  P |
+Equivalent deterministic automaton.
 
 
 
@@ -84,18 +79,118 @@ Automaton is not complete deterministic. Cannot be minimized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              d      a      b      c      
- ->    i | 2, 2 |    3 |    4 |    5 |
-       0 |    P |    P |    P |    5 |
-       1 |    2 |    P |    P |    P |
-       2 |    P |    3 |    P |    P |
-       3 |    P |    P |    4 |    P |
-       4 |    P |    P |    P |    5 |
-<-     5 |    P |    P |    P |    P |
-       6 |    2 |    P |    P |    P |
-       7 |    P |    3 |    P |    P |
-       8 |    P |    P |    4 |    P |
-       P |    P |    P |    P |    P |
+          d    a    b    c    
+ ->  i | 22 |  3 |  4 |  5 |
+    22 |  P |  3 |  P |  P |
+     3 |  P |  P |  4 |  P |
+     4 |  P |  P |  P |  5 |
+<-   5 |  P |  P |  P |  P |
+     P |  P |  P |  P |  P |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {5}
+ NT = {i, 22, 3, 4, P}
+Theta:
+ theta0 = T U NT
+
+Study of NT:
+          d    a    b    c    
+     i |  T | NT | NT | NT |
+    22 | NT | NT | NT | NT |
+     3 | NT | NT | NT | NT |
+     4 |  T | NT | NT | NT |
+     P | NT | NT | NT | NT |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {5}
+ A1 = {i, 4}
+ A2 = {22, 3, P}
+Theta:
+ theta1 = A0 U A1 U A2
+
+Study of A1:
+          d    a    b    c    
+     i | A0 | A1 | A2 | A2 |
+     4 | A0 | A2 | A2 | A2 |
+
+Study of A2:
+          d    a    b    c    
+    22 | A2 | A2 | A2 | A2 |
+     3 | A1 | A2 | A2 | A2 |
+     P | A2 | A2 | A2 | A2 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 2             |
++---------------------------+
+Sets:
+ B0 = {5}
+ B1 = {i}
+ B2 = {4}
+ B3 = {22, P}
+ B4 = {3}
+Theta:
+ theta2 = B0 U B1 U B2 U B3 U B4
+
+Study of B3:
+          d    a    b    c    
+    22 | B3 | B3 | B3 | B4 |
+     P | B3 | B3 | B3 | B3 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 3             |
++---------------------------+
+Sets:
+ C0 = {5}
+ C1 = {i}
+ C2 = {4}
+ C3 = {22}
+ C4 = {P}
+ C5 = {3}
+Theta:
+ theta3 = C0 U C1 U C2 U C3 U C4 U C5
+
+The partition is made only of singletons.
+The automaton was already minimal.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          d    a    b    c    
+ ->  i | 22 |  3 |  4 |  5 |
+    22 |  P |  3 |  P |  P |
+     3 |  P |  P |  4 |  P |
+     4 |  P |  P |  P |  5 |
+<-   5 |  P |  P |  P |  P |
+     P |  P |  P |  P |  P |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          d    a    b    c    
+ ->  i | 22 |  3 |  4 |  5 |
+    22 |  P |  3 |  P |  P |
+     3 |  P |  P |  4 |  P |
+     4 |  P |  P |  P |  5 |
+<-   5 |  P |  P |  P |  P |
+     P |  P |  P |  P |  P |
 Enter a word : 
 abba
 The word is not recognized.
@@ -115,30 +210,25 @@ The word is not recognized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              d      a      b      c      
- ->    i | 2, 2 |    3 |    4 |    5 |
-       0 |    P |    P |    P |    5 |
-       1 |    2 |    P |    P |    P |
-       2 |    P |    3 |    P |    P |
-       3 |    P |    P |    4 |    P |
-       4 |    P |    P |    P |    5 |
-<-     5 |    P |    P |    P |    P |
-       6 |    2 |    P |    P |    P |
-       7 |    P |    3 |    P |    P |
-       8 |    P |    P |    4 |    P |
-       P |    P |    P |    P |    P |
-Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
+          d    a    b    c    
+<->  i | 22 |  3 |  4 |  5 |
+<-  22 |  P |  3 |  P |  P |
+<-   3 |  P |  P |  4 |  P |
+<-   4 |  P |  P |  P |  5 |
+     5 |  P |  P |  P |  P |
+<-   P |  P |  P |  P |  P |
+Automaton recognizing the complementary language.
 
 
 Enter a word : 
 abba
-The word is not recognized.
+The word is recognized.
 
 Enter a word : 
 aba
-The word is not recognized.
+The word is recognized.
 
 Enter a word : 
 aac
-The word is not recognized.
+The word is recognized.
 

@@ -115,6 +115,8 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                     for i, aut in enumerate(A):
                         if aut[0] == partition0[st][0]:
                             Emin[index] = E[i]
+                elif len(partition0[st]) == 0:
+                    pass
                 else:
                     Amin.append([st])
                     FI = []
@@ -277,8 +279,8 @@ if __name__ == "__main__":
     for _ in range(10): print()
     """
 
-    A = [['i', '01', '12'], ['02', '01', '12'], ['01', '1', '012'], ['12', '01', '02'], ['012', '01', '012'], ['1', 'P', '02'], ['P', 'P', 'P']]
-    E = [' ->', '<- ', '<- ', '<- ', '<- ', '<- ', '   ']
+    A = [['i', 2, 0], [0, 'P', 'P'], [1, 2, 'P'], [2, 'P', 'P'], [3, 'P', 0], ['P', 'P', 'P']]
+    E = [' ->', '<- ', '   ', '<- ', '   ', '   ']
     L = ['a', 'b']
     
     print("\nAutomaton:")
@@ -286,6 +288,7 @@ if __name__ == "__main__":
     
     A, E = minimize(A, L, E)
     print("\nEquivalent minimal automaton:")
+    print(A)
     functions.display(A, L, E)
     
     

@@ -3,7 +3,7 @@ loader = importlib.import_module("Int1-2-loader")
 functions = importlib.import_module("Int1-2-functions")
 minimization = importlib.import_module("Int1-2-minimization")
 recognition = importlib.import_module("Int1-2-recognition")
-
+determinization = importlib.import_module("Int1-2-determinization")
 
 
 def displayInMenu(A, L, E=None):
@@ -77,9 +77,9 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton is already deterministic.")
         else:
-            #A, E = determinize(A,L,E,data)                      # DETERMINIZE FUNCTION HERE
+            A, E = determinization.determinize(A,L,E)                      # DETERMINIZE FUNCTION HERE
             displayInMenu(A, L, E)
-            print("Not implemented yet.")
+            print("Equivalent deterministic automaton.")
 
         menu(A, L, E, data)
         

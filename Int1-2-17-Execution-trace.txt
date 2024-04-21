@@ -55,16 +55,16 @@ Equivalent complete automaton.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      b      c      d      
- ->    i | 1, 2 | 2, 3 | 3, 4 | 4, 5 |
-       0 |    P |    P |    P |    P |
-       1 | 1, 2 |    P |    P |    P |
-       2 |    P | 2, 3 |    P |    P |
-       3 |    P |    P | 3, 4 |    P |
-       4 |    P |    P |    P | 4, 5 |
-<-     5 |    0 |    0 |    0 |    0 |
-       P |    P |    P |    P |    P |
-Automaton is not complete deterministic. Cannot be minimized.
+            a     b     c     d     
+ ->   i |  12 |  23 |  34 |  45 |
+     12 |  12 |  23 |   P |   P |
+     23 |   P |  23 |  34 |   P |
+     34 |   P |   P |  34 |  45 |
+<-   45 |   0 |   0 |   0 | 450 |
+      0 |   P |   P |   P |   P |
+<-  450 |   0 |   0 |   0 | 450 |
+      P |   P |   P |   P |   P |
+Equivalent deterministic automaton.
 
 
 
@@ -72,27 +72,122 @@ Automaton is not complete deterministic. Cannot be minimized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      b      c      d      
- ->    i | 1, 2 | 2, 3 | 3, 4 | 4, 5 |
-       0 |    P |    P |    P |    P |
-       1 | 1, 2 |    P |    P |    P |
-       2 |    P | 2, 3 |    P |    P |
-       3 |    P |    P | 3, 4 |    P |
-       4 |    P |    P |    P | 4, 5 |
-<-     5 |    0 |    0 |    0 |    0 |
-       P |    P |    P |    P |    P |
-Enter a word : 
-abba
-The word is not recognized.
+            a     b     c     d     
+ ->   i |  12 |  23 |  34 |  45 |
+     12 |  12 |  23 |   P |   P |
+     23 |   P |  23 |  34 |   P |
+     34 |   P |   P |  34 |  45 |
+<-   45 |   0 |   0 |   0 | 450 |
+      0 |   P |   P |   P |   P |
+<-  450 |   0 |   0 |   0 | 450 |
+      P |   P |   P |   P |   P |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {45, 450}
+ NT = {i, 12, 23, 34, 0, P}
+Theta:
+ theta0 = T U NT
 
-Enter a word : 
-aba
-The word is not recognized.
+Study of T:
+            a     b     c     d     
+     45 |   T |  NT |  NT |  NT |
+    450 |   T |  NT |  NT |  NT |
 
-Enter a word : 
-aac
-The word is not recognized.
+Study of NT:
+          a    b    c    d    
+     i |  T | NT | NT | NT |
+    12 | NT | NT | NT | NT |
+    23 | NT | NT | NT | NT |
+    34 |  T | NT | NT | NT |
+     0 | NT | NT | NT | NT |
+     P | NT | NT | NT | NT |
 
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {45, 450}
+ A1 = {i, 34}
+ A2 = {12, 23, 0, P}
+Theta:
+ theta1 = A0 U A1 U A2
+
+Study of A0:
+            a     b     c     d     
+     45 |  A0 |  A2 |  A2 |  A2 |
+    450 |  A0 |  A2 |  A2 |  A2 |
+
+Study of A1:
+          a    b    c    d    
+     i | A0 | A1 | A2 | A2 |
+    34 | A0 | A1 | A2 | A2 |
+
+Study of A2:
+          a    b    c    d    
+    12 | A2 | A2 | A2 | A2 |
+    23 | A1 | A2 | A2 | A2 |
+     0 | A2 | A2 | A2 | A2 |
+     P | A2 | A2 | A2 | A2 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 2             |
++---------------------------+
+Sets:
+ B0 = {45, 450}
+ B1 = {i, 34}
+ B2 = {12, 0, P}
+ B3 = {23}
+Theta:
+ theta2 = B0 U B1 U B2 U B3
+
+Study of B0:
+            a     b     c     d     
+     45 |  B0 |  B2 |  B2 |  B2 |
+    450 |  B0 |  B2 |  B2 |  B2 |
+
+Study of B1:
+          a    b    c    d    
+     i | B0 | B1 | B2 | B3 |
+    34 | B0 | B1 | B2 | B2 |
+
+Study of B2:
+          a    b    c    d    
+    12 | B2 | B2 | B2 | B3 |
+     0 | B2 | B2 | B2 | B2 |
+     P | B2 | B2 | B2 | B2 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 3             |
++---------------------------+
+Sets:
+ C0 = {45, 450}
+ C1 = {i}
+ C2 = {34}
+ C3 = {12}
+ C4 = {0, P}
+ C5 = {23}
+Theta:
+ theta3 = C0 U C1 U C2 U C3 U C4 U C5
+
+Study of C0:
+            a     b     c     d     
+     45 |  C0 |  C4 |  C4 |  C4 |
+    450 |  C0 |  C4 |  C4 |  C4 |
+
+Study of C4:
+          a    b    c    d    
+     0 | C4 | C4 | C4 | C4 |
+     P | C4 | C4 | C4 | C4 |
+
+There is no separation in the studies.
 
 
 
@@ -100,27 +195,4 @@ The word is not recognized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      b      c      d      
- ->    i | 1, 2 | 2, 3 | 3, 4 | 4, 5 |
-       0 |    P |    P |    P |    P |
-       1 | 1, 2 |    P |    P |    P |
-       2 |    P | 2, 3 |    P |    P |
-       3 |    P |    P | 3, 4 |    P |
-       4 |    P |    P |    P | 4, 5 |
-<-     5 |    0 |    0 |    0 |    0 |
-       P |    P |    P |    P |    P |
-Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
-
-
-Enter a word : 
-abba
-The word is not recognized.
-
-Enter a word : 
-aba
-The word is not recognized.
-
-Enter a word : 
-aac
-The word is not recognized.
-
+          a    b    c    d    

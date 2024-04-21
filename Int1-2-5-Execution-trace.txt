@@ -52,15 +52,12 @@ Equivalent complete automaton.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      b      
- ->    i | 2, 0 | 0, 4 |
-       0 |    0 |    0 |
-       1 |    2 |    0 |
-<-     2 |    P |    P |
-       3 |    0 |    4 |
-<-     4 |    P |    P |
-       P |    P |    P |
-Automaton is not complete deterministic. Cannot be minimized.
+          a    b    
+ ->  i | 20 | 04 |
+<-  20 |  0 |  0 |
+<-  04 |  0 |  0 |
+     0 |  0 |  0 |
+Equivalent deterministic automaton.
 
 
 
@@ -68,14 +65,71 @@ Automaton is not complete deterministic. Cannot be minimized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      b      
- ->    i | 2, 0 | 0, 4 |
-       0 |    0 |    0 |
-       1 |    2 |    0 |
-<-     2 |    P |    P |
-       3 |    0 |    4 |
-<-     4 |    P |    P |
-       P |    P |    P |
+          a    b    
+ ->  i | 20 | 04 |
+<-  20 |  0 |  0 |
+<-  04 |  0 |  0 |
+     0 |  0 |  0 |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {20, 04}
+ NT = {i, 0}
+Theta:
+ theta0 = T U NT
+
+Study of T:
+          a    b    
+    20 | NT | NT |
+    04 | NT | NT |
+
+Study of NT:
+          a    b    
+     i |  T |  T |
+     0 | NT | NT |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {20, 04}
+ A1 = {i}
+ A2 = {0}
+Theta:
+ theta1 = A0 U A1 U A2
+
+Study of A0:
+          a    b    
+    20 | A2 | A2 |
+    04 | A2 | A2 |
+
+There is no separation in the studies.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    
+<-  A0 |  0 |  0 |
+ ->  i | A0 | A0 |
+     0 |  0 |  0 |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    
+<-  A0 |  0 |  0 |
+ ->  i | A0 | A0 |
+     0 |  0 |  0 |
 Enter a word : 
 abba
 The word is not recognized.
@@ -96,24 +150,20 @@ The word is not recognized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      b      
- ->    i | 2, 0 | 0, 4 |
-       0 |    0 |    0 |
-       1 |    2 |    0 |
-<-     2 |    P |    P |
-       3 |    0 |    4 |
-<-     4 |    P |    P |
-       P |    P |    P |
-Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
+          a    b    
+    A0 |  0 |  0 |
+<->  i | A0 | A0 |
+<-   0 |  0 |  0 |
+Automaton recognizing the complementary language.
 
 
 Enter a word : 
 abba
-The word is not recognized.
+The word is recognized.
 
 Enter a word : 
 aba
-The word is not recognized.
+The word is recognized.
 
 Enter a word : 
 aac

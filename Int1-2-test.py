@@ -4,6 +4,7 @@ functions = importlib.import_module("Int1-2-functions")
 minimization = importlib.import_module("Int1-2-minimization")
 recognition = importlib.import_module("Int1-2-recognition")
 menu = importlib.import_module("Int1-2-menu")
+determinization = importlib.import_module("Int1-2-determinization")
 
 #python Int1-2-tests.py > output.txt
 
@@ -79,7 +80,7 @@ else:
     print("Equivalent complete automaton.")
 
 
-"""if functions.automata_type(A,L,E)[2] == 1:
+if functions.automata_type(A,L,E)[2] == 1:
     print("\n\n\n")
     print("+-----------+")
     print("| AUTOMATON |")
@@ -87,13 +88,13 @@ else:
     functions.display(A, L, E)
     print("Automaton is already deterministic.")
 else:
-    #A, E = determinize(A,L,E,data)                      # DETERMINIZE FUNCTION HERE
+    A, E = determinization.determinize(A,L,E)
     print("\n\n\n")
     print("+-----------+")
     print("| AUTOMATON |")
     print("+-----------+")
     functions.display(A, L, E)
-    print("Not implemented yet.")"""
+    print("Equivalent deterministic automaton.")
 
 
 print("\n\n\n")

@@ -49,14 +49,16 @@ Equivalent complete automaton.
 +-----------+
 | AUTOMATON |
 +-----------+
-                          a            b            
- ->          i | 1, 1, 1, 2 |       2, 2 |
-             0 |          1 |          2 |
-<-           1 |          1 |          2 |
-             2 |          0 |          1 |
-             3 |       1, 2 |          P |
-             P |          P |          P |
-Automaton is not complete deterministic. Cannot be minimized.
+              a      b      
+ ->    i | 1112 |   22 |
+<-  1112 |   10 |   21 |
+      22 |    0 |    1 |
+<-    10 |    1 |    2 |
+<-    21 |   10 |   21 |
+       0 |    1 |    2 |
+<-     1 |    1 |    2 |
+       2 |    0 |    1 |
+Equivalent deterministic automaton.
 
 
 
@@ -64,26 +66,97 @@ Automaton is not complete deterministic. Cannot be minimized.
 +-----------+
 | AUTOMATON |
 +-----------+
-                          a            b            
- ->          i | 1, 1, 1, 2 |       2, 2 |
-             0 |          1 |          2 |
-<-           1 |          1 |          2 |
-             2 |          0 |          1 |
-             3 |       1, 2 |          P |
-             P |          P |          P |
-Enter a word : 
-abba
-The word is not recognized.
+              a      b      
+ ->    i | 1112 |   22 |
+<-  1112 |   10 |   21 |
+      22 |    0 |    1 |
+<-    10 |    1 |    2 |
+<-    21 |   10 |   21 |
+       0 |    1 |    2 |
+<-     1 |    1 |    2 |
+       2 |    0 |    1 |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {1112, 10, 21, 1}
+ NT = {i, 22, 0, 2}
+Theta:
+ theta0 = T U NT
 
-Enter a word : 
-aba
-The word is not recognized.
+Study of T:
+              a      b      
+    1112 |    T |    T |
+      10 |    T |   NT |
+      21 |    T |    T |
+       1 |    T |   NT |
 
-Enter a word : 
-aac
-Letter not in language detected.
-The word is not recognized.
+Study of NT:
+          a    b    
+     i |  T | NT |
+    22 |  T | NT |
+     0 |  T | NT |
+     2 |  T | NT |
 
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {1112, 21}
+ A1 = {10, 1}
+ A2 = {i, 22, 0, 2}
+Theta:
+ theta1 = A0 U A1 U A2
+
+Study of A0:
+              a      b      
+    1112 |   A0 |   A1 |
+      21 |   A0 |   A1 |
+
+Study of A1:
+          a    b    
+    10 | A1 | A2 |
+     1 | A1 | A2 |
+
+Study of A2:
+          a    b    
+     i | A0 | A2 |
+    22 | A1 | A2 |
+     0 | A1 | A2 |
+     2 | A1 | A2 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 2             |
++---------------------------+
+Sets:
+ B0 = {1112, 21}
+ B1 = {10, 1}
+ B2 = {i}
+ B3 = {22, 0, 2}
+Theta:
+ theta2 = B0 U B1 U B2 U B3
+
+Study of B0:
+              a      b      
+    1112 |   B0 |   B1 |
+      21 |   B0 |   B1 |
+
+Study of B1:
+          a    b    
+    10 | B1 | B3 |
+     1 | B1 | B3 |
+
+Study of B3:
+          a    b    
+    22 | B1 | B3 |
+     0 | B1 | B3 |
+     2 | B1 | B3 |
+
+There is no separation in the studies.
 
 
 
@@ -91,26 +164,4 @@ The word is not recognized.
 +-----------+
 | AUTOMATON |
 +-----------+
-                          a            b            
- ->          i | 1, 1, 1, 2 |       2, 2 |
-             0 |          1 |          2 |
-<-           1 |          1 |          2 |
-             2 |          0 |          1 |
-             3 |       1, 2 |          P |
-             P |          P |          P |
-Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
-
-
-Enter a word : 
-abba
-The word is not recognized.
-
-Enter a word : 
-aba
-The word is not recognized.
-
-Enter a word : 
-aac
-Letter not in language detected.
-The word is not recognized.
-
+          a    b    
