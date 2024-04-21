@@ -1,4 +1,5 @@
-from functions import display
+import importlib
+functions = importlib.import_module("Int1-2-functions")
 
 # Word recognition function
 # The function should return a boolean
@@ -122,27 +123,27 @@ def read_word (word):
 
 
 if __name__ == "__main__":
-    from functions import *
-    from loader import *
+    loader = importlib.import_module("Int1-2-loader")
+
 
     # Read the data from the text file
-    data = load_data('test_automata.txt')
+    data = loader.load_data('test_automata.txt')
 
     # Create the language list
-    L = load_language(data)
+    L = loader.load_language(data)
 
     # Create the list of terminal / non terminal states
-    E = load_state(data)
+    E = loader.load_state(data)
     E[1] = "<->"
 
 
 
     # Create the automaton
-    A = load_transition(data,L)
+    A = loader.load_transition(data,L)
 
 
 
-    display(A, L, E)
+    functions.display(A, L, E)
 
     '''# Test the recognize function
     print(read_word(word))'''
@@ -154,3 +155,4 @@ if __name__ == "__main__":
     #word = input ("enter a word pls : ")
     #read_word(word)
 
+    input()

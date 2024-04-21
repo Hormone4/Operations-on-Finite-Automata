@@ -59,10 +59,10 @@ def load_transition(data,L):
 
 
 if __name__ == "__main__":
+    import importlib
+    functions = importlib.import_module("Int1-2-functions")
 
-    from functions import *
-
-    data = load_data('test_automata.txt')  #import data
+    data = load_data('Int1-2-15.txt')  #import data
     print("text file:", data)
 
 
@@ -80,4 +80,6 @@ if __name__ == "__main__":
     A = load_transition(data,L)
     print("Automaton:", A)
 
-    display(A, L, E)
+    functions.display(A, L, E)
+
+    input()

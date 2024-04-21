@@ -1,7 +1,8 @@
-from loader import *
-from functions import *
-from minimization import *
-from recognition import *
+import importlib
+loader = importlib.import_module("Int1-2-loader")
+functions = importlib.import_module("Int1-2-functions")
+minimization = importlib.import_module("Int1-2-minimization")
+recognition = importlib.import_module("Int1-2-recognition")
 
 
 
@@ -10,7 +11,7 @@ def displayInMenu(A, L, E=None):
     print("┌──────────────────────────┐")
     print("│   AUTOMATON              │")
     print("└──────────────────────────┘")
-    display(A, L, E)
+    functions.display(A, L, E)
     print()
 
 
@@ -39,7 +40,7 @@ def menu(A, L, E, data):
 
     elif choice == '2':
         displayInMenu(A, L, E)
-        S = automata_type(A,L,E)
+        S = functions.automata_type(A,L,E)
         sb = ["Standard:","Complete:","Deterministic:"]
         for i in sb:
             if S[sb.index(i)] == 1:
@@ -50,29 +51,29 @@ def menu(A, L, E, data):
         menu(A, L, E, data)
 
     elif choice == '3':
-        if automata_type(A,L,E)[0] == 1:
+        if functions.automata_type(A,L,E)[0] == 1:
             displayInMenu(A, L, E)
             print("Automaton is already standard.")
         else:
-            A, E = standardize(A,L,E)
+            A, E = functions.standardize(A,L,E)
             displayInMenu(A, L, E)
             print("Standard equivalent automaton.")
 
         menu(A, L, E, data)
         
     elif choice == '4':
-        if automata_type(A,L,E)[1] == 1:
+        if functions.automata_type(A,L,E)[1] == 1:
             displayInMenu(A, L, E)
             print("Automaton is already complete.")
         else:
-            A = complete(A, E, L)
+            A = functions.complete(A, E, L)
             displayInMenu(A, L, E)
             print("Equivalent complete automaton.")
 
         menu(A, L, E, data)
         
     elif choice == '5':
-        if automata_type(A,L,E)[2] == 1:
+        if functions.automata_type(A,L,E)[2] == 1:
             displayInMenu(A, L, E)
             print("Automaton is already deterministic.")
         else:
@@ -85,9 +86,9 @@ def menu(A, L, E, data):
     elif choice == '6':
         displayInMenu(A, L, E)
         # Check if the automaton is complete deterministic
-        type = automata_type(A, L, E)
+        type = functions.automata_type(A, L, E)
         if type[1] == 1 and type[2] == 1:
-            A, E = minimize(A,L,E)
+            A, E = minimization.minimize(A,L,E)
             displayInMenu(A, L, E)
             print("Equivalent minimal automaton.")
         else:
@@ -98,8 +99,8 @@ def menu(A, L, E, data):
         displayInMenu(A, L, E)
         word = ""
         while word != "end":
-            word2=read_word(word)
-            if recognize(A, L, E, word2) : 
+            word2 = recognition.read_word(word)
+            if recognition.recognize(A, L, E, word2) : 
                 print("The word is recognized.")
             else:
                 print("The word is not recognized.")
@@ -108,9 +109,9 @@ def menu(A, L, E, data):
     
     elif choice == '8':
         # Check if the automaton is complete deterministic
-        type = automata_type(A, L, E)
+        type = functions.automata_type(A, L, E)
         if type[1] == 1 and type[2] == 1:
-            A, E = complementary(A, L, E)
+            A, E = functions.complementary(A, L, E)
             displayInMenu(A, L, E)
             print("Automaton recognizing the complementary language.")
         else:
@@ -132,17 +133,17 @@ def menu(A, L, E, data):
 if __name__ == "__main__":
 
     # Read the data from the text file
-    data = load_data('Int1-2-Test-automaton/Int1-2-15.txt')
+    data = loader.load_data('Int1-2-15.txt')
 
     # Create the language list
-    L = load_language(data)
+    L = loader.load_language(data)
 
     # Create the list of terminal / non terminal states
-    E = load_state(data)
+    E = loader.load_state(data)
     #E[2] = " ->"   # for test purposes
 
     # Create the automaton
-    A = load_transition(data,L)
+    A = loader.load_transition(data,L)
 
     
 

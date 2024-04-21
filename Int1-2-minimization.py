@@ -1,4 +1,6 @@
-from functions import display, automata_type
+import importlib
+functions = importlib.import_module("Int1-2-functions")
+
 import copy   # syntax: cop = copy.deepcopy(partition0)
 
 
@@ -41,7 +43,7 @@ def minimizeReal(A, L, E, partition0, letter='@'):
                                     if sh in partition0[sett]:
                                         st1.append(sett)
                 print("Study of", names[namenum]+':')
-                display(aut, L)
+                functions.display(aut, L)
                 print()
 
             # If the automaton is a singleton, do nothing
@@ -226,7 +228,6 @@ def printPartition(partition, num):
 
 
 if __name__ == "__main__":
-    from functions import *
     
     
     """
@@ -281,11 +282,11 @@ if __name__ == "__main__":
     L = ['a', 'b']
     
     print("\nAutomaton:")
-    display(A, L, E)
+    functions.display(A, L, E)
     
     A, E = minimize(A, L, E)
     print("\nEquivalent minimal automaton:")
-    display(A, L, E)
+    functions.display(A, L, E)
     
     
     
