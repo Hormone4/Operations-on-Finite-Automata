@@ -7,6 +7,25 @@ from functions import display
 
 def recognize(A, L, E, word):
     #/!\ penser à mettre le empty word si <- <-> et si " "
+    if len(word) == 0: #empty word recognition
+        for j in range (0, len(E)-1):
+            if E[j] == "<->": 
+                print("emptyyyy word recognized")
+                return 1
+    """for i in range (0, len(word)-1): #empty word recognition
+        for j in range (0, len(E)-1):
+            if E[j] == "<->": 
+                if word[i] == " ":
+                    print("mot vide reconnu")
+                    return 1"""
+    if word[0] == " " and all(element == word[0] for element in word):
+        print("mot vide reconnu")
+        return 1
+
+    
+    word = word.replace(" ", "")
+    #print(word)
+    
     i = 0
     states=[]
     if word[0] not in L: #if the first letter of word isn't in alphabet L
@@ -42,19 +61,38 @@ def recognize(A, L, E, word):
             if word[j] not in L: #if a letter of the word isn't in the language
                 print("Letter not in language")
                 return 0
-            current_letter = L.index(word[j]) + 1 #gives the index in the L list of the current letter  
+            current_letter = L.index(word[j]) + 1 #gives the index in the L list of the current letter   
             not_doublons = [] #this list doesn't contain the duplicates
             next_states = []
             for element in states:
                 if element in not_doublons: #avoid repeating the actions if a state has already been computed
                     break
                 else :
-                    outputs = A[element][current_letter] 
+                    """if element == "p" or element == "P":
+                        element = E.index(element)"""
+                    
+                    print(states)
+                    for el in range(len(states)):
+                        for i, linee in enumerate(A):
+                            if states[el] == linee[0]:
+                                print("CACA", el,i)
+                                states[el] = i
+                    print(states)
+                    for i in range(5): print()
+
+                    outputs = A[element][current_letter]
+
                     if isinstance (outputs, list): #only if it's a list, it permits to have a list containing only integers and no lists 
                         for a in range(0,len(outputs)):
                             next_states.append(outputs[a])
                             not_doublons.append(element)
                         break
+                    '''if isinstance(outputs, str):
+                        next_states.append(outputs)
+                        not_doublons.append(element)
+                        print("string okkkk")
+                        break'''
+
                     if outputs == -1 : #doesn't go if there is a -1 (-)
                         break 
                     else : 
@@ -68,13 +106,20 @@ def recognize(A, L, E, word):
                 return 0
                 
             if k == len(word)-1: #if we are at the last letter of the word
+                for el in states:
+                    for i, linee in enumerate(A):
+                        if el == linee[0]:
+                            el = i
+                            break
+
+                #for element in states:
                 for element in states:
-                    if E[element]=="<-" or E[element]=="<->": #if the states are <- or <->
+                    if E[element]=="<- " or E[element]=="<->": #if the states are <- or <->
                         print("mot reconnu")
                         return 1
                         break
                 else :
-                    print("nan, mot pas reconnu") #if there is not <- or <->
+                    print("nan, mot pas reconnu") #if there is no <- or <->
                     return 0
 
 
@@ -84,14 +129,9 @@ def recognize(A, L, E, word):
 
 
 def read_word (word):
-    while True:
-        word = input ("Enter a word (write 'end' to stop) : ")
-        if word == "end":
-            break
-        else:
-            recognize(A, L, E, word)
-            word = input ("Enter a word (write 'end' to stop) : ")
-            read_word(word)
+    word = str(input("Enter a word (write 'end' to stop) : "))
+    return word
+
 
 
 
@@ -122,9 +162,10 @@ if __name__ == "__main__":
     '''# Test the recognize function
     print(read_word(word))'''
 
-    #recognize(A,L,E,"aba")
+    #recognize(A,L,E,"          ")
     #word = input("Enter a word : ")
     #read_word(word)
     
-    word = input ("enter a word pls : ")
-    read_word(word)
+    #word = input ("enter a word pls : ")
+    #read_word(word)
+

@@ -96,12 +96,14 @@ def menu(A, L, E, data):
 
     elif choice == '7':
         displayInMenu(A, L, E)
-        word = input("Enter a word to recognize: ")
-        #if recognize(A,L,word):                              # RECOGNIZE FUNCTION HERE
-        #    print("The word is recognized.")
-        #else:
-        #    print("The word is not recognized.")
-        print("Not implemented yet.")
+        word = ""
+        while word != "end":
+            word2=read_word(word)
+            if recognize(A, L, E, word2) : 
+                print("The word is recognized.")
+            else:
+                print("The word is not recognized.")
+        
         menu(A, L, E, data)
     
     elif choice == '8':
