@@ -204,4 +204,4 @@ if __name__ == "__main__":
     A, E = complete(A, E, L)
     display(A, L, E)
 
-    #input()
+    input()

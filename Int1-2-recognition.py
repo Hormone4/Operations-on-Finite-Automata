@@ -128,7 +128,7 @@ if __name__ == "__main__":
 
 
     # Read the data from the text file
-    data = loader.load_data('test_automata.txt')
+    data = loader.load_data('Int1-2-15.txt')
 
     # Create the language list
     L = loader.load_language(data)
