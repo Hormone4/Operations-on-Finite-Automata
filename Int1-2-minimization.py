@@ -197,9 +197,9 @@ def minimize(A, L, E):
 def printPartition(partition, num):
     l = len(str(num))-1
     if l < 0: l = 0
-    print("┌───────────────────────────"+"─"*l+"┐")
-    print("│   PARTITION "+str(num)+"             │")
-    print("└───────────────────────────"+"─"*l+"┘")
+    print("+---------------------------"+"-"*l+"+")
+    print("|   PARTITION "+str(num)+"             |")
+    print("+---------------------------"+"-"*l+"+")
 
     # Print the sets of the partition
     print("Sets:")
@@ -212,10 +212,10 @@ def printPartition(partition, num):
 
     # Print the union of the sets of the partition
     print("Theta:")
-    print(' θ'+str(num), end=" = ")
+    print(' theta'+str(num), end=" = ")
     s = ""
     for i in partition:
-        s += i + " ∪ "
+        s += i + " U "
     print(s[:-3])
 
     print()

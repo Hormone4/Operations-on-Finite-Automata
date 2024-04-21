@@ -1,0 +1,250 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    
+<-   0 |  2 |  - |
+<->  1 |  2 |  - |
+     2 |  3 |  3 |
+     3 |  4 |  - |
+     4 |  5 |  5 |
+     5 |  0 |  - |
+Standard: yes
+Complete: no
+Deterministic: yes
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    
+<-   0 |  2 |  - |
+<->  1 |  2 |  - |
+     2 |  3 |  3 |
+     3 |  4 |  - |
+     4 |  5 |  5 |
+     5 |  0 |  - |
+Automaton is already standard.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+<-  0 | 2 | P |
+<-> 1 | 2 | P |
+    2 | 3 | 3 |
+    3 | 4 | P |
+    4 | 5 | 5 |
+    5 | 0 | P |
+    P | P | P |
+Equivalent complete automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+<-  0 | 2 | P |
+<-> 1 | 2 | P |
+    2 | 3 | 3 |
+    3 | 4 | P |
+    4 | 5 | 5 |
+    5 | 0 | P |
+    P | P | P |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {0, 1}
+ NT = {2, 3, 4, 5, P}
+Theta:
+ theta0 = T U NT
+
+Study of T:
+          a    b    
+     0 | NT | NT |
+     1 | NT | NT |
+
+Study of NT:
+          a    b    
+     2 | NT | NT |
+     3 | NT | NT |
+     4 | NT | NT |
+     5 |  T | NT |
+     P | NT | NT |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {0, 1}
+ A1 = {2, 3, 4, P}
+ A2 = {5}
+Theta:
+ theta1 = A0 U A1 U A2
+
+Study of A0:
+          a    b    
+     0 | A1 | A1 |
+     1 | A1 | A1 |
+
+Study of A1:
+          a    b    
+     2 | A1 | A1 |
+     3 | A1 | A1 |
+     4 | A2 | A2 |
+     P | A1 | A1 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 2             |
++---------------------------+
+Sets:
+ B0 = {0, 1}
+ B1 = {2, 3, P}
+ B2 = {4}
+ B3 = {5}
+Theta:
+ theta2 = B0 U B1 U B2 U B3
+
+Study of B0:
+          a    b    
+     0 | B1 | B1 |
+     1 | B1 | B1 |
+
+Study of B1:
+          a    b    
+     2 | B1 | B1 |
+     3 | B1 | B2 |
+     P | B1 | B1 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 3             |
++---------------------------+
+Sets:
+ C0 = {0, 1}
+ C1 = {2, P}
+ C2 = {3}
+ C3 = {4}
+ C4 = {5}
+Theta:
+ theta3 = C0 U C1 U C2 U C3 U C4
+
+Study of C0:
+          a    b    
+     0 | C1 | C1 |
+     1 | C1 | C1 |
+
+Study of C1:
+          a    b    
+     2 | C2 | C2 |
+     P | C1 | C1 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 4             |
++---------------------------+
+Sets:
+ D0 = {0, 1}
+ D1 = {2}
+ D2 = {P}
+ D3 = {3}
+ D4 = {4}
+ D5 = {5}
+Theta:
+ theta4 = D0 U D1 U D2 U D3 U D4 U D5
+
+Study of D0:
+          a    b    
+     0 | D1 | D2 |
+     1 | D1 | D2 |
+
+There is no separation in the studies.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    
+<-> D0 |  2 |  P |
+     2 |  3 |  3 |
+     P |  P |  P |
+     3 |  4 |  P |
+     4 |  5 |  5 |
+     5 | D0 |  P |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    
+<-> D0 |  2 |  P |
+     2 |  3 |  3 |
+     P |  P |  P |
+     3 |  4 |  P |
+     4 |  5 |  5 |
+     5 | D0 |  P |
+Enter a word : 
+abba
+The word is not recognized.
+
+Enter a word : 
+aba
+The word is not recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    
+ -> D0 |  2 |  P |
+<-   2 |  3 |  3 |
+<-   P |  P |  P |
+<-   3 |  4 |  P |
+<-   4 |  5 |  5 |
+<-   5 | D0 |  P |
+Automaton recognizing the complementary language.
+
+
+Enter a word : 
+abba
+The word is recognized.
+
+Enter a word : 
+aba
+The word is recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+

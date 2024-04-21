@@ -1,0 +1,144 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          d    a    b    c    
+ ->  0 |  - |  - |  - |  5 |
+ ->  1 |  2 |  - |  - |  - |
+     2 |  - |  3 |  - |  - |
+     3 |  - |  - |  4 |  - |
+     4 |  - |  - |  - |  5 |
+<-   5 |  - |  - |  - |  - |
+ ->  6 |  2 |  - |  - |  - |
+ ->  7 |  - |  3 |  - |  - |
+ ->  8 |  - |  - |  4 |  - |
+Standard: no
+Complete: no
+Deterministic: no
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              d      a      b      c      
+ ->    i | 2, 2 |    3 |    4 |    5 |
+       0 |    - |    - |    - |    5 |
+       1 |    2 |    - |    - |    - |
+       2 |    - |    3 |    - |    - |
+       3 |    - |    - |    4 |    - |
+       4 |    - |    - |    - |    5 |
+<-     5 |    - |    - |    - |    - |
+       6 |    2 |    - |    - |    - |
+       7 |    - |    3 |    - |    - |
+       8 |    - |    - |    4 |    - |
+Standard equivalent automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              d      a      b      c      
+ ->    i | 2, 2 |    3 |    4 |    5 |
+       0 |    P |    P |    P |    5 |
+       1 |    2 |    P |    P |    P |
+       2 |    P |    3 |    P |    P |
+       3 |    P |    P |    4 |    P |
+       4 |    P |    P |    P |    5 |
+<-     5 |    P |    P |    P |    P |
+       6 |    2 |    P |    P |    P |
+       7 |    P |    3 |    P |    P |
+       8 |    P |    P |    4 |    P |
+       P |    P |    P |    P |    P |
+Equivalent complete automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              d      a      b      c      
+ ->    i | 2, 2 |    3 |    4 |    5 |
+       0 |    P |    P |    P |    5 |
+       1 |    2 |    P |    P |    P |
+       2 |    P |    3 |    P |    P |
+       3 |    P |    P |    4 |    P |
+       4 |    P |    P |    P |    5 |
+<-     5 |    P |    P |    P |    P |
+       6 |    2 |    P |    P |    P |
+       7 |    P |    3 |    P |    P |
+       8 |    P |    P |    4 |    P |
+       P |    P |    P |    P |    P |
+Automaton is not complete deterministic. Cannot be minimized.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              d      a      b      c      
+ ->    i | 2, 2 |    3 |    4 |    5 |
+       0 |    P |    P |    P |    5 |
+       1 |    2 |    P |    P |    P |
+       2 |    P |    3 |    P |    P |
+       3 |    P |    P |    4 |    P |
+       4 |    P |    P |    P |    5 |
+<-     5 |    P |    P |    P |    P |
+       6 |    2 |    P |    P |    P |
+       7 |    P |    3 |    P |    P |
+       8 |    P |    P |    4 |    P |
+       P |    P |    P |    P |    P |
+Enter a word : 
+abba
+The word is not recognized.
+
+Enter a word : 
+aba
+The word is not recognized.
+
+Enter a word : 
+aac
+The word is not recognized.
+
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              d      a      b      c      
+ ->    i | 2, 2 |    3 |    4 |    5 |
+       0 |    P |    P |    P |    5 |
+       1 |    2 |    P |    P |    P |
+       2 |    P |    3 |    P |    P |
+       3 |    P |    P |    4 |    P |
+       4 |    P |    P |    P |    5 |
+<-     5 |    P |    P |    P |    P |
+       6 |    2 |    P |    P |    P |
+       7 |    P |    3 |    P |    P |
+       8 |    P |    P |    4 |    P |
+       P |    P |    P |    P |    P |
+Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
+
+
+Enter a word : 
+abba
+The word is not recognized.
+
+Enter a word : 
+aba
+The word is not recognized.
+
+Enter a word : 
+aac
+The word is not recognized.
+

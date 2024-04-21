@@ -1,0 +1,63 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    
+ ->  0 |  1 |
+     1 |  - |
+Standard: yes
+Complete: no
+Deterministic: yes
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    
+ ->  0 |  1 |
+     1 |  - |
+Automaton is already standard.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+ -> 0 | 1 |
+    1 | P |
+    P | P |
+Equivalent complete automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+ -> 0 | 1 |
+    1 | P |
+    P | P |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {}
+ NT = {0, 1, P}
+Theta:
+ theta0 = T U NT
+
+Study of NT:
+          a    
+     0 | NT |
+     1 | NT |
+     P | NT |
+
+There is no separation in the studies.

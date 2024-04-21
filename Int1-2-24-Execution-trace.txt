@@ -1,0 +1,182 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    c    d    
+<-   0 |  - |  - |  - |  0 |
+ ->  1 |  2 |  3 |  4 |  0 |
+     2 |  2 |  3 |  4 |  0 |
+     3 |  - |  3 |  4 |  0 |
+     4 |  - |  - |  4 |  0 |
+Standard: yes
+Complete: no
+Deterministic: yes
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    c    d    
+<-   0 |  - |  - |  - |  0 |
+ ->  1 |  2 |  3 |  4 |  0 |
+     2 |  2 |  3 |  4 |  0 |
+     3 |  - |  3 |  4 |  0 |
+     4 |  - |  - |  4 |  0 |
+Automaton is already standard.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   c   d   
+<-  0 | P | P | P | 0 |
+ -> 1 | 2 | 3 | 4 | 0 |
+    2 | 2 | 3 | 4 | 0 |
+    3 | P | 3 | 4 | 0 |
+    4 | P | P | 4 | 0 |
+    P | P | P | P | P |
+Equivalent complete automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   c   d   
+<-  0 | P | P | P | 0 |
+ -> 1 | 2 | 3 | 4 | 0 |
+    2 | 2 | 3 | 4 | 0 |
+    3 | P | 3 | 4 | 0 |
+    4 | P | P | 4 | 0 |
+    P | P | P | P | P |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {0}
+ NT = {1, 2, 3, 4, P}
+Theta:
+ theta0 = T U NT
+
+Study of NT:
+          a    b    c    d    
+     1 |  T | NT | NT | NT |
+     2 |  T | NT | NT | NT |
+     3 |  T | NT | NT | NT |
+     4 |  T | NT | NT | NT |
+     P | NT | NT | NT | NT |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {0}
+ A1 = {1, 2, 3, 4}
+ A2 = {P}
+Theta:
+ theta1 = A0 U A1 U A2
+
+Study of A1:
+          a    b    c    d    
+     1 | A0 | A1 | A1 | A1 |
+     2 | A0 | A1 | A1 | A1 |
+     3 | A0 | A1 | A1 | A2 |
+     4 | A0 | A1 | A2 | A2 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 2             |
++---------------------------+
+Sets:
+ B0 = {0}
+ B1 = {1, 2}
+ B2 = {3}
+ B3 = {4}
+ B4 = {P}
+Theta:
+ theta2 = B0 U B1 U B2 U B3 U B4
+
+Study of B1:
+          a    b    c    d    
+     1 | B0 | B1 | B2 | B3 |
+     2 | B0 | B1 | B2 | B3 |
+
+There is no separation in the studies.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    c    d    
+<-   0 |  P |  P |  P |  0 |
+ -> B1 |  0 | B1 |  3 |  4 |
+     3 |  P |  3 |  4 |  0 |
+     4 |  P |  P |  4 |  0 |
+     P |  P |  P |  P |  P |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    c    d    
+<-   0 |  P |  P |  P |  0 |
+ -> B1 |  0 | B1 |  3 |  4 |
+     3 |  P |  3 |  4 |  0 |
+     4 |  P |  P |  4 |  0 |
+     P |  P |  P |  P |  P |
+Enter a word : 
+abba
+The word is not recognized.
+
+Enter a word : 
+aba
+The word is not recognized.
+
+Enter a word : 
+aac
+The word is not recognized.
+
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    c    d    
+     0 |  P |  P |  P |  0 |
+<-> B1 |  0 | B1 |  3 |  4 |
+<-   3 |  P |  3 |  4 |  0 |
+<-   4 |  P |  P |  4 |  0 |
+<-   P |  P |  P |  P |  P |
+Automaton recognizing the complementary language.
+
+
+Enter a word : 
+abba
+The word is recognized.
+
+Enter a word : 
+aba
+The word is recognized.
+
+Enter a word : 
+aac
+The word is recognized.
+

@@ -1,0 +1,123 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              a      
+<-     0 |    4 |
+ ->    1 | 2, 4 |
+       2 |    3 |
+<-     3 | 2, 0 |
+       4 | 3, 5 |
+       5 |    0 |
+Standard: yes
+Complete: yes
+Deterministic: no
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              a      
+<-     0 |    4 |
+ ->    1 | 2, 4 |
+       2 |    3 |
+<-     3 | 2, 0 |
+       4 | 3, 5 |
+       5 |    0 |
+Automaton is already standard.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              a      
+<-     0 |    4 |
+ ->    1 | 2, 4 |
+       2 |    3 |
+<-     3 | 2, 0 |
+       4 | 3, 5 |
+       5 |    0 |
+Automaton is already complete.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              a      
+<-     0 |    4 |
+ ->    1 | 2, 4 |
+       2 |    3 |
+<-     3 | 2, 0 |
+       4 | 3, 5 |
+       5 |    0 |
+Automaton is not complete deterministic. Cannot be minimized.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              a      
+<-     0 |    4 |
+ ->    1 | 2, 4 |
+       2 |    3 |
+<-     3 | 2, 0 |
+       4 | 3, 5 |
+       5 |    0 |
+Enter a word : 
+abba
+Letter not in language detected.
+The word is not recognized.
+
+Enter a word : 
+aba
+Letter not in language detected.
+The word is not recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              a      
+<-     0 |    4 |
+ ->    1 | 2, 4 |
+       2 |    3 |
+<-     3 | 2, 0 |
+       4 | 3, 5 |
+       5 |    0 |
+Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
+
+
+Enter a word : 
+abba
+Letter not in language detected.
+The word is not recognized.
+
+Enter a word : 
+aba
+Letter not in language detected.
+The word is not recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+

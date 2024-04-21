@@ -1,0 +1,70 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+<-> 0 | 1 | 3 |
+<-  1 | 1 | 2 |
+<-  2 | 3 | 3 |
+<-  3 | 3 | 3 |
+Standard: yes
+Complete: yes
+Deterministic: yes
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+<-> 0 | 1 | 3 |
+<-  1 | 1 | 2 |
+<-  2 | 3 | 3 |
+<-  3 | 3 | 3 |
+Automaton is already standard.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+<-> 0 | 1 | 3 |
+<-  1 | 1 | 2 |
+<-  2 | 3 | 3 |
+<-  3 | 3 | 3 |
+Automaton is already complete.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+<-> 0 | 1 | 3 |
+<-  1 | 1 | 2 |
+<-  2 | 3 | 3 |
+<-  3 | 3 | 3 |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {0, 1, 2, 3}
+ NT = {}
+Theta:
+ theta0 = T U NT
+
+Study of T:
+        a   b   
+    0 | T | T |
+    1 | T | T |
+    2 | T | T |
+    3 | T | T |
+
+There is no separation in the studies.

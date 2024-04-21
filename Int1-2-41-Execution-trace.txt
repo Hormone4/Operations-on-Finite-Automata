@@ -1,0 +1,114 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+ -> 0 | 1 | 4 |
+<-  1 | 2 | 3 |
+<-  2 | 2 | 3 |
+<-  3 | 5 | 5 |
+<-  4 | 5 | 5 |
+    5 | 5 | 5 |
+Standard: yes
+Complete: yes
+Deterministic: yes
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+ -> 0 | 1 | 4 |
+<-  1 | 2 | 3 |
+<-  2 | 2 | 3 |
+<-  3 | 5 | 5 |
+<-  4 | 5 | 5 |
+    5 | 5 | 5 |
+Automaton is already standard.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+ -> 0 | 1 | 4 |
+<-  1 | 2 | 3 |
+<-  2 | 2 | 3 |
+<-  3 | 5 | 5 |
+<-  4 | 5 | 5 |
+    5 | 5 | 5 |
+Automaton is already complete.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+ -> 0 | 1 | 4 |
+<-  1 | 2 | 3 |
+<-  2 | 2 | 3 |
+<-  3 | 5 | 5 |
+<-  4 | 5 | 5 |
+    5 | 5 | 5 |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {1, 2, 3, 4}
+ NT = {0, 5}
+Theta:
+ theta0 = T U NT
+
+Study of T:
+          a    b    
+     1 |  T |  T |
+     2 |  T |  T |
+     3 | NT | NT |
+     4 | NT | NT |
+
+Study of NT:
+          a    b    
+     0 |  T |  T |
+     5 | NT | NT |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {1, 2}
+ A1 = {3, 4}
+ A2 = {0}
+ A3 = {5}
+Theta:
+ theta1 = A0 U A1 U A2 U A3
+
+Study of A0:
+          a    b    
+     1 | A0 | A1 |
+     2 | A0 | A1 |
+
+Study of A1:
+          a    b    
+     3 | A3 | A3 |
+     4 | A3 | A3 |
+
+There is no separation in the studies.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    b    

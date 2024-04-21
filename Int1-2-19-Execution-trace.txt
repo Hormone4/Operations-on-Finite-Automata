@@ -1,0 +1,144 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+<-  0 | 0 |
+ -> 1 | 2 |
+    2 | 0 |
+Standard: yes
+Complete: yes
+Deterministic: yes
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+<-  0 | 0 |
+ -> 1 | 2 |
+    2 | 0 |
+Automaton is already standard.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+<-  0 | 0 |
+ -> 1 | 2 |
+    2 | 0 |
+Automaton is already complete.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+<-  0 | 0 |
+ -> 1 | 2 |
+    2 | 0 |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {0}
+ NT = {1, 2}
+Theta:
+ theta0 = T U NT
+
+Study of NT:
+          a    
+     1 | NT |
+     2 |  T |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {0}
+ A1 = {1}
+ A2 = {2}
+Theta:
+ theta1 = A0 U A1 U A2
+
+The partition is made only of singletons.
+The automaton was already minimal.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+<-  0 | 0 |
+ -> 1 | 2 |
+    2 | 0 |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+<-  0 | 0 |
+ -> 1 | 2 |
+    2 | 0 |
+Enter a word : 
+abba
+Letter not in language detected.
+The word is not recognized.
+
+Enter a word : 
+aba
+Letter not in language detected.
+The word is not recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+    0 | 0 |
+<-> 1 | 2 |
+<-  2 | 0 |
+Automaton recognizing the complementary language.
+
+
+Enter a word : 
+abba
+Letter not in language detected.
+The word is not recognized.
+
+Enter a word : 
+aba
+Letter not in language detected.
+The word is not recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+

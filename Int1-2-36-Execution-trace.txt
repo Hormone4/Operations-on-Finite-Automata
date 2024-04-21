@@ -1,0 +1,110 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+              a      b      
+ ->    0 |    1 | 1, 2 |
+<-     1 |    - | 0, 2 |
+<->    2 | 0, 1 |    - |
+Standard: no
+Complete: no
+Deterministic: no
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         
+ ->       i | 1, 0, 1 |    1, 2 |
+          0 |       1 |    1, 2 |
+<-        1 |       - |    0, 2 |
+<-        2 |    0, 1 |       - |
+Standard equivalent automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         
+ ->       i | 1, 0, 1 |    1, 2 |
+          0 |       1 |    1, 2 |
+<-        1 |       P |    0, 2 |
+<-        2 |    0, 1 |       P |
+          P |       P |       P |
+Equivalent complete automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         
+ ->       i | 1, 0, 1 |    1, 2 |
+          0 |       1 |    1, 2 |
+<-        1 |       P |    0, 2 |
+<-        2 |    0, 1 |       P |
+          P |       P |       P |
+Automaton is not complete deterministic. Cannot be minimized.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         
+ ->       i | 1, 0, 1 |    1, 2 |
+          0 |       1 |    1, 2 |
+<-        1 |       P |    0, 2 |
+<-        2 |    0, 1 |       P |
+          P |       P |       P |
+Enter a word : 
+abba
+The word is not recognized.
+
+Enter a word : 
+aba
+The word is not recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         
+ ->       i | 1, 0, 1 |    1, 2 |
+          0 |       1 |    1, 2 |
+<-        1 |       P |    0, 2 |
+<-        2 |    0, 1 |       P |
+          P |       P |       P |
+Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
+
+
+Enter a word : 
+abba
+The word is not recognized.
+
+Enter a word : 
+aba
+The word is not recognized.
+
+Enter a word : 
+aac
+Letter not in language detected.
+The word is not recognized.
+

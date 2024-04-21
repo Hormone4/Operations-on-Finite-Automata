@@ -1,0 +1,114 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         c         d         
+          0 |       - |       - |       - |       1 |
+<->       1 | 2, 3, 0 |       - |       - |       - |
+          2 |       - |       3 |       - |       - |
+          3 |       - |       - |       0 |       - |
+Standard: no
+Complete: no
+Deterministic: no
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         c         d         
+ ->       i | 2, 3, 0 |       - |       - |       - |
+          0 |       - |       - |       - |       1 |
+<-        1 | 2, 3, 0 |       - |       - |       - |
+          2 |       - |       3 |       - |       - |
+          3 |       - |       - |       0 |       - |
+Standard equivalent automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         c         d         
+ ->       i | 2, 3, 0 |       P |       P |       P |
+          0 |       P |       P |       P |       1 |
+<-        1 | 2, 3, 0 |       P |       P |       P |
+          2 |       P |       3 |       P |       P |
+          3 |       P |       P |       0 |       P |
+          P |       P |       P |       P |       P |
+Equivalent complete automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         c         d         
+ ->       i | 2, 3, 0 |       P |       P |       P |
+          0 |       P |       P |       P |       1 |
+<-        1 | 2, 3, 0 |       P |       P |       P |
+          2 |       P |       3 |       P |       P |
+          3 |       P |       P |       0 |       P |
+          P |       P |       P |       P |       P |
+Automaton is not complete deterministic. Cannot be minimized.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         c         d         
+ ->       i | 2, 3, 0 |       P |       P |       P |
+          0 |       P |       P |       P |       1 |
+<-        1 | 2, 3, 0 |       P |       P |       P |
+          2 |       P |       3 |       P |       P |
+          3 |       P |       P |       0 |       P |
+          P |       P |       P |       P |       P |
+Enter a word : 
+abba
+The word is not recognized.
+
+Enter a word : 
+aba
+The word is not recognized.
+
+Enter a word : 
+aac
+The word is not recognized.
+
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+                    a         b         c         d         
+ ->       i | 2, 3, 0 |       P |       P |       P |
+          0 |       P |       P |       P |       1 |
+<-        1 | 2, 3, 0 |       P |       P |       P |
+          2 |       P |       3 |       P |       P |
+          3 |       P |       P |       0 |       P |
+          P |       P |       P |       P |       P |
+Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
+
+
+Enter a word : 
+abba
+The word is not recognized.
+
+Enter a word : 
+aba
+The word is not recognized.
+
+Enter a word : 
+aac
+The word is not recognized.
+
