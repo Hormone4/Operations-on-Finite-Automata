@@ -11,10 +11,10 @@ def recognize(A, L, E, word):
     if len(word) == 0: #empty word recognition
         for j in range (0, len(E)-1):
             if E[j] == "<->": 
-                print("emptyyyy word recognized")
+                print("Empty word.")
                 return 1
     if word[0] == " " and all(element == word[0] for element in word): #empty word recognition
-        print("mot vide reconnu")
+        print("Empty word.")
         return 1
 
     
@@ -24,7 +24,7 @@ def recognize(A, L, E, word):
     i = 0
     states=[]
     if word[0] not in L: #if the first letter of word isn't in alphabet L
-        print("First letter not in language")
+        print("First letter not in language.")
         return 0
     else :
         first_letter=L.index(word[0]) + 1 #takes the index of the first letter of the word compared to alphabet L, and we add 1 because there are +1 states compared to L 
@@ -42,10 +42,12 @@ def recognize(A, L, E, word):
 
         if len(word) == 1: #if the word is only one character of the alphabet
             for element in states:
+                for i, linee in enumerate(A):   # Convert the state into its index in the automaton
+                    if element == linee[0]:
+                        element = i
                 if E[element]=="<-" or E[element]=="<->": #checks if we can go out of the automata 
-                        print("mot avec 1 lettre reconnue")
+                        print("Single letter word.")
                         return 1
-                        break
                 else : 
                     return 0
         
@@ -54,7 +56,7 @@ def recognize(A, L, E, word):
         k = 0
         while k<len(word)-1:
             if word[j] not in L: #if a letter of the word isn't in the language
-                print("Letter not in language")
+                print("Letter not in language detected.")
                 return 0
             current_letter = L.index(word[j]) + 1 #gives the index in the L list of the current letter   
             not_doublons = [] #this list doesn't contain the duplicates
@@ -87,7 +89,7 @@ def recognize(A, L, E, word):
             k+=1
             j+=1
             if k<len(word)-1 and states == []: #if the word can't be written due to a letter in the word
-                print("nan, mot pas reconnu")
+                #print("nan, mot pas reconnu")
                 return 0
                 
             if k == len(word)-1: #if we are at the last letter of the word
@@ -101,11 +103,10 @@ def recognize(A, L, E, word):
                             break
                         
                     if E[element]=="<- " or E[element]=="<->": #if the states are <- or <->
-                        print("mot reconnu")
+                        #print("mot reconnu")
                         return 1
-                        break
-                else :
-                    print("nan, mot pas reconnu") #if there is no <- or <->
+                else :   #if there is no <- or <->
+                    #print("nan, mot pas reconnu") 
                     return 0
 
 
