@@ -116,7 +116,7 @@ def menu(A, L, E, data):
             print("Automaton recognizing the complementary language.")
         else:
             displayInMenu(A, L, E)
-            print("Automaton is not complete deterministic.\nCannot find the automaton recognizing the complementary language.")
+            print("Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.")
         menu(A, L, E, data)
 
         

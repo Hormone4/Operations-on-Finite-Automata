@@ -6,9 +6,11 @@ recognition = importlib.import_module("Int1-2-recognition")
 menu = importlib.import_module("Int1-2-menu")
 
 
+AUTOMATON_NUMBER = 15
+
 
 # Load the data
-data = loader.load_data('Int1-2-15.txt')   # Read the data from the text file
+data = loader.load_data("Int1-2-"+str(AUTOMATON_NUMBER)+".txt")   # Read the data from the text file
 
 # Create the automaton
 L = loader.load_language(data)      # Create the list containing the language 
