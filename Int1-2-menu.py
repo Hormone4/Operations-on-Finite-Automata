@@ -66,7 +66,7 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton is already complete.")
         else:
-            A = functions.complete(A, E, L)
+            A, E = functions.complete(A, E, L)
             displayInMenu(A, L, E)
             print("Equivalent complete automaton.")
 
@@ -117,7 +117,8 @@ def menu(A, L, E, data):
             displayInMenu(A, L, E)
             print("Automaton recognizing the complementary language.")
         else:
-            print("Automaton is not complete deterministic.\nCannot find the automaton recognizing the complementary language.")
+            displayInMenu(A, L, E)
+            print("Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.")
         menu(A, L, E, data)
 
         

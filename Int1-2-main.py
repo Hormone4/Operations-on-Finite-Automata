@@ -6,42 +6,17 @@ recognition = importlib.import_module("Int1-2-recognition")
 menu = importlib.import_module("Int1-2-menu")
 
 
+AUTOMATON_NUMBER = 15
+
+
+# Load the data
+data = loader.load_data("Int1-2-"+str(AUTOMATON_NUMBER)+".txt")   # Read the data from the text file
+
+# Create the automaton
+L = loader.load_language(data)      # Create the list containing the language 
+E = loader.load_state(data)         # Create the list of terminal / non terminal states
+A = loader.load_transition(data,L)  # Create the automaton
 
 # Mainloop
-
-data = loader.load_data('test_automata.txt')  #import data
-print("text file:", data)
-
-#create the language
-L = loader.load_language(data)
-print("\nAlphabet: ", L)
-
-#terminal and non terminal list
-E = loader.load_state(data)
-#print("Initial / terminal states:", E)
-E[2] = " ->"
-print("Initial / terminal states:", E)
-
-#transition matrice
-A = loader.load_transition(data,L)
-functions.display(A, L, E)
-
-#type of automata
-S = functions.automata_type(A,L,E)
-print("\nStandard, complete, deterministic:",S,"\n")
-
-#standardize automata
-A, E = functions.standardize(A,L,E)
-print("Standard automaton:", A)
-functions.display(A, L, E)
-
-#get the complementary automaton
-A, E = functions.complementary(A, L, E)
-print("Complementary automaton")
-functions.display(A, L, E)
-
-
-
-
-
-input()
+menu.displayInMenu(A, L, E)
+menu.menu(A, L, E, data)

@@ -131,18 +131,28 @@ def standardize(M, L, E): #only works for single entry
 
 
 def complete(M, E, L):
+    # replace all -1 transitions in the automaton with P
     for i in M:
         for j in range(1, len(L) + 1):
             if i[j] == -1:
                 i[j] = "P"
-    return M
+    
+    # check if there is a P state in the automaton
+    hasP = False
+    for i in M:
+        if i[0] == "P":
+            hasP = True
+            break
+    # if there is no P state, add it
+    if hasP == False:
+        plist = ["P" for _ in range(len(L)+1)]
+        M.append(plist)
+        E.append("   ")
+    return M, E
 
 
 def complementary(M, L, E):
-    #print(E)
-    #S = automata_type(M, L, E)
-    #if S[1] == 1:
-    #    M = complete(M, E, L)
+    # replace all entries in the automaton with their complementary
     for i in range(len(E)):
         if E[i]== '   ':
             E[i] = '<- '
@@ -177,6 +187,10 @@ if __name__ == "__main__":
          [4, -1, "P", 3, 4],
          ['P', 'P', 'P', 'P', 'P']]
     display(A, L, E)
+    A, E = complete(A, E, L)
+    display(A, L, E)
+
+
 
     L = ["a","b"]
     E = [" ->", "   ", "   ", "   ", "<- "]
@@ -187,4 +201,7 @@ if __name__ == "__main__":
         ['E', -1, 'C']]
     display(A, L, E)
 
-    display(A, L)
+    A, E = complete(A, E, L)
+    display(A, L, E)
+
+    #input()
