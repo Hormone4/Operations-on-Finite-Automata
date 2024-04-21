@@ -6,7 +6,7 @@ recognition = importlib.import_module("Int1-2-recognition")
 menu = importlib.import_module("Int1-2-menu")
 
 
-AUTOMATON_NUMBER = 6
+AUTOMATON_NUMBER = 21
 
 
 # Load the data

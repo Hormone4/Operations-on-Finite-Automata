@@ -121,7 +121,7 @@ def standardize(M, L, E): #only works for single entry
                     i[m].append(y)
     for z in range(1, len(L)+1): # remove unnecessary -1
         if len(i[z]) == 1 or (len(i[z])==2 and -1 in i[z]) :
-            if i[z][0] != -1 :
+            if i[z][0] != -1 or len(i[z]) == 1:
                 i[z] = i[z][0]
             else :
                 i[z] = i[z][1]
