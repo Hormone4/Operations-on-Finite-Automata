@@ -1,12 +1,9 @@
 import importlib
 loader = importlib.import_module("Int1-2-loader")
-functions = importlib.import_module("Int1-2-functions")
-minimization = importlib.import_module("Int1-2-minimization")
-recognition = importlib.import_module("Int1-2-recognition")
 menu = importlib.import_module("Int1-2-menu")
 
 
-AUTOMATON_NUMBER = 21
+AUTOMATON_NUMBER = 22
 
 
 # Load the data

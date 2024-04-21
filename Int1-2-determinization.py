@@ -88,12 +88,12 @@ def determinizeReal(A,L,E, Adet, Edet, trans_list):
             for i in trans:
                 new_state += str(i)
             if new_state == "":
-                for i in A:
+                """for i in A:
                     if i[0] == "P":
                         new_state = "P"
                         break
-                    else:
-                        new_state = -1
+                    else:"""
+                new_state = -1
             Adet[len(Adet)-1].append(new_state)
 
         return determinizeReal(A,L,E, Adet, Edet, trans_list)
@@ -173,18 +173,29 @@ def determinize(A,L,E):
             if i not in (-1, "P"):
                 new_state += str(i)
         if new_state == "":
-            for i in A:
+            """for i in A:
                 if i[0] == "P":
                     new_state = "P"
                     break
-                else:
-                    new_state = -1
+                else:"""
+            new_state = -1
         Adet[0].append(new_state)
 
     print("Adet: ", Adet)
     print("Edet: ", Edet)
     print("trans_list:", trans_list)
     return determinizeReal(A,L,E, Adet, Edet, trans_list)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
