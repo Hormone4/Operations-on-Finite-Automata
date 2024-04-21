@@ -41,6 +41,17 @@ Equivalent complete automaton.
         None   
 <-> 0 | P |
     P | P |
+Automaton is already deterministic.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        None   
+<-> 0 | P |
+    P | P |
 +---------------------------+
 |   PARTITION 0             |
 +---------------------------+

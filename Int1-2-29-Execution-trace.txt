@@ -52,14 +52,16 @@ Automaton is already complete.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      
-<-     0 |    4 |
- ->    1 | 2, 4 |
-       2 |    3 |
-<-     3 | 2, 0 |
-       4 | 3, 5 |
-       5 |    0 |
-Automaton is not complete deterministic. Cannot be minimized.
+                  a        
+ ->      1 |     24 |
+        24 |    335 |
+<-     335 |     20 |
+<-      20 |     43 |
+<-      43 |   2035 |
+<-    2035 |   4320 |
+<-    4320 | 432035 |
+<-  432035 | 432035 |
+Equivalent deterministic automaton.
 
 
 
@@ -67,13 +69,83 @@ Automaton is not complete deterministic. Cannot be minimized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      
-<-     0 |    4 |
- ->    1 | 2, 4 |
-       2 |    3 |
-<-     3 | 2, 0 |
-       4 | 3, 5 |
-       5 |    0 |
+                  a        
+ ->      1 |     24 |
+        24 |    335 |
+<-     335 |     20 |
+<-      20 |     43 |
+<-      43 |   2035 |
+<-    2035 |   4320 |
+<-    4320 | 432035 |
+<-  432035 | 432035 |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {335, 20, 43, 2035, 4320, 432035}
+ NT = {1, 24}
+Theta:
+ theta0 = T U NT
+
+Study of T:
+                  a        
+       335 |      T |
+        20 |      T |
+        43 |      T |
+      2035 |      T |
+      4320 |      T |
+    432035 |      T |
+
+Study of NT:
+          a    
+     1 | NT |
+    24 |  T |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {335, 20, 43, 2035, 4320, 432035}
+ A1 = {1}
+ A2 = {24}
+Theta:
+ theta1 = A0 U A1 U A2
+
+Study of A0:
+                  a        
+       335 |     A0 |
+        20 |     A0 |
+        43 |     A0 |
+      2035 |     A0 |
+      4320 |     A0 |
+    432035 |     A0 |
+
+There is no separation in the studies.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    
+<-  A0 | A0 |
+ ->  1 | 24 |
+    24 | A0 |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          a    
+<-  A0 | A0 |
+ ->  1 | 24 |
+    24 | A0 |
 Enter a word : 
 abba
 Letter not in language detected.
@@ -96,14 +168,11 @@ The word is not recognized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      
-<-     0 |    4 |
- ->    1 | 2, 4 |
-       2 |    3 |
-<-     3 | 2, 0 |
-       4 | 3, 5 |
-       5 |    0 |
-Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
+          a    
+    A0 | A0 |
+<->  1 | 24 |
+<-  24 | A0 |
+Automaton recognizing the complementary language.
 
 
 Enter a word : 

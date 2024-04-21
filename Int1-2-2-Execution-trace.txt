@@ -42,6 +42,17 @@ Automaton is already complete.
         a   
  -> i | 0 |
 <-  0 | 0 |
+Automaton is already deterministic.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   
+ -> i | 0 |
+<-  0 | 0 |
 +---------------------------+
 |   PARTITION 0             |
 +---------------------------+

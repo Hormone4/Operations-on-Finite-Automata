@@ -47,13 +47,15 @@ Equivalent complete automaton.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      b      
- ->    0 | 1, 2 |    2 |
-       1 |    P |    3 |
-<-     2 |    3 |    2 |
-<-     3 | 3, 2 | 3, 2 |
-       P |    P |    P |
-Automaton is not complete deterministic. Cannot be minimized.
+            a     b     
+ ->   0 |  12 |   2 |
+<-   12 |   3 |  32 |
+<-    2 |   3 |   2 |
+<-    3 |  32 |  32 |
+<-   32 | 332 | 232 |
+<-  332 | 332 | 232 |
+<-  232 | 332 | 232 |
+Equivalent deterministic automaton.
 
 
 
@@ -61,12 +63,54 @@ Automaton is not complete deterministic. Cannot be minimized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      b      
- ->    0 | 1, 2 |    2 |
-       1 |    P |    3 |
-<-     2 |    3 |    2 |
-<-     3 | 3, 2 | 3, 2 |
-       P |    P |    P |
+            a     b     
+ ->   0 |  12 |   2 |
+<-   12 |   3 |  32 |
+<-    2 |   3 |   2 |
+<-    3 |  32 |  32 |
+<-   32 | 332 | 232 |
+<-  332 | 332 | 232 |
+<-  232 | 332 | 232 |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {12, 2, 3, 32, 332, 232}
+ NT = {0}
+Theta:
+ theta0 = T U NT
+
+Study of T:
+            a     b     
+     12 |   T |   T |
+      2 |   T |   T |
+      3 |   T |   T |
+     32 |   T |   T |
+    332 |   T |   T |
+    232 |   T |   T |
+
+There is no separation in the studies.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+<-  T | T | T |
+ -> 0 | T | T |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        a   b   
+<-  T | T | T |
+ -> 0 | T | T |
 Enter a word : 
 abba
 The word is recognized.
@@ -87,22 +131,19 @@ The word is not recognized.
 +-----------+
 | AUTOMATON |
 +-----------+
-              a      b      
- ->    0 | 1, 2 |    2 |
-       1 |    P |    3 |
-<-     2 |    3 |    2 |
-<-     3 | 3, 2 | 3, 2 |
-       P |    P |    P |
-Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
+        a   b   
+    T | T | T |
+<-> 0 | T | T |
+Automaton recognizing the complementary language.
 
 
 Enter a word : 
 abba
-The word is recognized.
+The word is not recognized.
 
 Enter a word : 
 aba
-The word is recognized.
+The word is not recognized.
 
 Enter a word : 
 aac

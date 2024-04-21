@@ -9,9 +9,16 @@ def determinizeReal(A,L,E, Adet, Edet, trans_list):
 
     # If there are no more new states to add, return the new automaton
     if len(trans_list) == 0:   # Default case of the recursive function
-        print("\nFINAL Adet: ", Adet)
-        print("FINAL Edet: ", Edet)
-        functions.display(Adet, L, Edet)
+        hasP = False
+        for i in Adet:
+            if "P" in i:
+                hasP = True
+                break
+        if hasP:
+            plist = ["P" for _ in range(len(L)+1)]
+            Adet.append(plist)
+            Edet.append("   ")
+        #functions.display(Adet, L, Edet)
         return Adet, Edet
 
     else:
@@ -20,15 +27,23 @@ def determinizeReal(A,L,E, Adet, Edet, trans_list):
         trans_list.pop(0)
         while len(trans_current) == 0:
             if len(trans_list) == 0:   # Default case of the recursive function
-                print("\nFINAL Adet: ", Adet)
-                print("FINAL Edet: ", Edet)
-                functions.display(Adet, L, Edet)
+                hasP = False
+                for i in Adet:
+                    if "P" in i:
+                        hasP = True
+                        break
+                if hasP:
+                    plist = ["P" for _ in range(len(L)+1)]
+                    Adet.append(plist)
+                    Edet.append("   ")
+                #functions.display(Adet, L, Edet)
                 return Adet, Edet
+            
             trans_current = trans_list[0]
             trans_list.pop(0)
 
-        print("\ntrans_current:",trans_current)
-        print("trans_list:", trans_list)
+        #print("\ntrans_current:",trans_current)
+        #print("trans_list:", trans_list)
 
 
         # Obtain the indexes of the current states in the transition list
@@ -36,7 +51,7 @@ def determinizeReal(A,L,E, Adet, Edet, trans_list):
         for i, el in enumerate(A):
             if el[0] in trans_current:
                 index_list.append(i)
-        print("index_list: ", index_list)
+        #print("index_list: ", index_list)
 
         # Add the new state to the new automaton
         new_state = ""
@@ -65,7 +80,7 @@ def determinizeReal(A,L,E, Adet, Edet, trans_list):
                         new_trans_list[i].append(j)
                 elif transition not in new_trans_list[i] and transition not in ("P", -1):
                     new_trans_list[i].append(transition)
-        print("new_trans_list:", new_trans_list)
+        #print("new_trans_list:", new_trans_list)
 
         # Add them to the list of transitions
         for el in new_trans_list:
@@ -88,22 +103,16 @@ def determinizeReal(A,L,E, Adet, Edet, trans_list):
             for i in trans:
                 new_state += str(i)
             if new_state == "":
-                """for i in A:
+                for i in A:
                     if i[0] == "P":
                         new_state = "P"
                         break
-                    else:"""
-                new_state = -1
+                    else:
+                        new_state = -1
             Adet[len(Adet)-1].append(new_state)
 
         return determinizeReal(A,L,E, Adet, Edet, trans_list)
 
-
-
-        print("\ntrans_list:", trans_list)
-
-        print("Adet: ", Adet)
-        print("Edet: ", Edet)
 
 
 
@@ -114,7 +123,7 @@ def determinize(A,L,E):
     for i, e in enumerate(E):
         if e in ("<->", " ->"):
             index_list.append(i)
-    print("index_list: ", index_list)
+    #print("index_list: ", index_list)
 
     Adet = []
     Edet = []
@@ -147,7 +156,7 @@ def determinize(A,L,E):
                     new_trans_list[i].append(j)
             elif transition not in new_trans_list[i] and transition not in ("P", -1):
                 new_trans_list[i].append(transition)
-    print("new_trans_list:", new_trans_list)
+    #print("new_trans_list:", new_trans_list)
 
     # Add them to the list of transitions
     trans_list = []
@@ -173,17 +182,17 @@ def determinize(A,L,E):
             if i not in (-1, "P"):
                 new_state += str(i)
         if new_state == "":
-            """for i in A:
+            for i in A:
                 if i[0] == "P":
                     new_state = "P"
                     break
-                else:"""
-            new_state = -1
+                else:
+                    new_state = -1
         Adet[0].append(new_state)
 
-    print("Adet: ", Adet)
-    print("Edet: ", Edet)
-    print("trans_list:", trans_list)
+    #print("Adet: ", Adet)
+    #print("Edet: ", Edet)
+    #print("trans_list:", trans_list)
     return determinizeReal(A,L,E, Adet, Edet, trans_list)
 
 

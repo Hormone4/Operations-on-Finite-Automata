@@ -46,13 +46,16 @@ Equivalent complete automaton.
 +-----------+
 | AUTOMATON |
 +-----------+
-                    a         b         
- ->       i | 1, 0, 1 |    1, 2 |
-          0 |       1 |    1, 2 |
-<-        1 |       P |    0, 2 |
-<-        2 |    0, 1 |       P |
-          P |       P |       P |
-Automaton is not complete deterministic. Cannot be minimized.
+              a      b      
+ ->    i |  101 |   12 |
+<-   101 |    1 | 1202 |
+<-    12 |   01 |   02 |
+<-     1 |    P |   02 |
+<-  1202 |  101 | 1202 |
+<-    01 |    1 | 1202 |
+<-    02 |  101 |   12 |
+       P |    P |    P |
+Equivalent deterministic automaton.
 
 
 
@@ -60,25 +63,85 @@ Automaton is not complete deterministic. Cannot be minimized.
 +-----------+
 | AUTOMATON |
 +-----------+
-                    a         b         
- ->       i | 1, 0, 1 |    1, 2 |
-          0 |       1 |    1, 2 |
-<-        1 |       P |    0, 2 |
-<-        2 |    0, 1 |       P |
-          P |       P |       P |
-Enter a word : 
-abba
-The word is not recognized.
+              a      b      
+ ->    i |  101 |   12 |
+<-   101 |    1 | 1202 |
+<-    12 |   01 |   02 |
+<-     1 |    P |   02 |
+<-  1202 |  101 | 1202 |
+<-    01 |    1 | 1202 |
+<-    02 |  101 |   12 |
+       P |    P |    P |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {101, 12, 1, 1202, 01, 02}
+ NT = {i, P}
+Theta:
+ theta0 = T U NT
 
-Enter a word : 
-aba
-The word is not recognized.
+Study of T:
+              a      b      
+     101 |    T |    T |
+      12 |    T |    T |
+       1 |    T |   NT |
+    1202 |    T |    T |
+      01 |    T |    T |
+      02 |    T |    T |
 
-Enter a word : 
-aac
-Letter not in language detected.
-The word is not recognized.
+Study of NT:
+          a    b    
+     i |  T |  T |
+     P | NT | NT |
 
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 1             |
++---------------------------+
+Sets:
+ A0 = {101, 12, 1202, 01, 02}
+ A1 = {1}
+ A2 = {i}
+ A3 = {P}
+Theta:
+ theta1 = A0 U A1 U A2 U A3
+
+Study of A0:
+              a      b      
+     101 |   A0 |   A1 |
+      12 |   A0 |   A0 |
+    1202 |   A0 |   A0 |
+      01 |   A0 |   A1 |
+      02 |   A0 |   A0 |
+
+There is separation in the studies. We need to create a new partition.
+
++---------------------------+
+|   PARTITION 2             |
++---------------------------+
+Sets:
+ B0 = {101, 01}
+ B1 = {12, 1202, 02}
+ B2 = {1}
+ B3 = {i}
+ B4 = {P}
+Theta:
+ theta2 = B0 U B1 U B2 U B3 U B4
+
+Study of B0:
+            a     b     
+    101 |  B1 |  B2 |
+     01 |  B1 |  B2 |
+
+Study of B1:
+              a      b      
+      12 |   B0 |   B1 |
+    1202 |   B0 |   B1 |
+      02 |   B0 |   B1 |
+
+There is no separation in the studies.
 
 
 
@@ -86,25 +149,4 @@ The word is not recognized.
 +-----------+
 | AUTOMATON |
 +-----------+
-                    a         b         
- ->       i | 1, 0, 1 |    1, 2 |
-          0 |       1 |    1, 2 |
-<-        1 |       P |    0, 2 |
-<-        2 |    0, 1 |       P |
-          P |       P |       P |
-Automaton is not complete deterministic. Cannot find the automaton recognizing the complementary language.
-
-
-Enter a word : 
-abba
-The word is not recognized.
-
-Enter a word : 
-aba
-The word is not recognized.
-
-Enter a word : 
-aac
-Letter not in language detected.
-The word is not recognized.
-
+          a    b    
