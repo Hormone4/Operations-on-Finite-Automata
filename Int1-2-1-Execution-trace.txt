@@ -1,0 +1,118 @@
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          None    
+<->  0 |  - |
+Standard: yes
+Complete: no
+Deterministic: yes
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+          None    
+<->  0 |  - |
+Automaton is already standard.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        None   
+<-> 0 | P |
+    P | P |
+Equivalent complete automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        None   
+<-> 0 | P |
+    P | P |
++---------------------------+
+|   PARTITION 0             |
++---------------------------+
+Sets:
+ T = {0}
+ NT = {P}
+Theta:
+ theta0 = T U NT
+
+The partition is made only of singletons.
+The automaton was already minimal.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        None   
+<-> 0 | P |
+    P | P |
+Equivalent minimal automaton.
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        None   
+<-> 0 | P |
+    P | P |
+Enter a word : 
+abba
+First letter not in language.
+The word is not recognized.
+
+Enter a word : 
+aba
+First letter not in language.
+The word is not recognized.
+
+Enter a word : 
+aac
+First letter not in language.
+The word is not recognized.
+
+
+
+
+
++-----------+
+| AUTOMATON |
++-----------+
+        None   
+ -> 0 | P |
+<-  P | P |
+Automaton recognizing the complementary language.
+
+
+Enter a word : 
+abba
+First letter not in language.
+The word is not recognized.
+
+Enter a word : 
+aba
+First letter not in language.
+The word is not recognized.
+
+Enter a word : 
+aac
+First letter not in language.
+The word is not recognized.
+
