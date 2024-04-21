@@ -45,7 +45,7 @@ def recognize(A, L, E, word):
                 for i, linee in enumerate(A):   # Convert the state into its index in the automaton
                     if element == linee[0]:
                         element = i
-                if E[element]=="<-" or E[element]=="<->": #checks if we can go out of the automata 
+                if E[element]=="<- " or E[element]=="<->": #checks if we can go out of the automata 
                         print("Single letter word.")
                         return 1
                 else : 
