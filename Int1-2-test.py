@@ -13,14 +13,13 @@ determinization = importlib.import_module("Int1-2-determinization")
 
 
 # Load the data
+# Read the data from the text file
 AUTOMATON_NUMBER = 15
-data = loader.load_data("Int1-2-"+str(AUTOMATON_NUMBER)+".txt")   # Read the data from the text file
-
-
+data = loader.load_data("Int1-2-"+str(AUTOMATON_NUMBER)+".txt")   # FOR MANUAL TESTS
 
 import sys
 # Use the sys module to get the automaton file name as a command-line argument
-data = loader.load_data(sys.argv[1])   # Read the data from the text file
+data = loader.load_data(sys.argv[1])   # FOR AUTOMATED TESTS
 
 
 # Create the automaton

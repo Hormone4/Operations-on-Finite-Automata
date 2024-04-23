@@ -7,7 +7,6 @@ files = os.listdir()
 # Filter out the automaton files
 automaton_files = [f for f in files if f.startswith("Int1-2-") and f.endswith(".txt") and not(f.endswith("-Execution-trace.txt"))]
 
-#print(automaton_files)
 
 # For each automaton file
 for automaton_file in automaton_files:
