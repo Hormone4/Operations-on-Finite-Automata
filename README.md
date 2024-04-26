@@ -12,7 +12,7 @@ The folder contains 44 txt files each representing an automaton that you can tes
 7. Test word recognition
 8. Create a FA recognizing the complementary language
 ## Data format
-### Example of the text file:<br>
+### Example of a text file:<br>
 2<br>
 5<br>
 1 0<br>
