@@ -36,4 +36,4 @@ A = [[0, [0,1], 0],<br>
 
 - L is the alphabet
 - E is the list of initial/final states in order (" ->" is initial, "<- " is final, "   " is neither, "<->" is both)
-- A is the automaton. The first column of A are the states of A, the other columns are the targets of the transitions according to the alphabet. -1 is for no transition 'P' is for garbage state.
+- A is the automaton. The first column of A is the states of A, the other columns are the targets of the transitions according to the alphabet. -1 is for no transition. The automaton accepts integers, lists and characters / strings.
