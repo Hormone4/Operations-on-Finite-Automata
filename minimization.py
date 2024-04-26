@@ -1,5 +1,5 @@
 import importlib
-functions = importlib.import_module("Int1-2-functions")
+functions = importlib.import_module("functions")
 
 import copy   # syntax: cop = copy.deepcopy(partition0)
 

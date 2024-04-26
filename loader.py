@@ -63,9 +63,9 @@ def load_transition(data,L):
 
 if __name__ == "__main__":
     import importlib
-    functions = importlib.import_module("Int1-2-functions")
+    functions = importlib.import_module("functions")
 
-    data = load_data('Int1-2-15.txt')  #import data
+    data = load_data('15.txt')  #import data
     print("text file:", data)
 
 

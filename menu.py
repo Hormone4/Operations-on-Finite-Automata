@@ -1,9 +1,9 @@
 import importlib
-loader = importlib.import_module("Int1-2-loader")
-functions = importlib.import_module("Int1-2-functions")
-minimization = importlib.import_module("Int1-2-minimization")
-recognition = importlib.import_module("Int1-2-recognition")
-determinization = importlib.import_module("Int1-2-determinization")
+loader = importlib.import_module("loader")
+functions = importlib.import_module("functions")
+minimization = importlib.import_module("minimization")
+recognition = importlib.import_module("recognition")
+determinization = importlib.import_module("determinization")
 
 
 def displayInMenu(A, L, E=None):
@@ -136,7 +136,7 @@ def menu(A, L, E, data):
 if __name__ == "__main__":
 
     # Read the data from the text file
-    data = loader.load_data('Int1-2-15.txt')
+    data = loader.load_data('15.txt')
 
     # Create the language list
     L = loader.load_language(data)

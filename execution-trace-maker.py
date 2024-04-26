@@ -5,14 +5,14 @@ import subprocess
 files = os.listdir()
 
 # Filter out the automaton files
-automaton_files = [f for f in files if f.startswith("Int1-2-") and f.endswith(".txt") and not(f.endswith("-Execution-trace.txt"))]
+automaton_files = [f for f in files if f.endswith(".txt") and not(f.startswith("README")) and not(f.startswith(".gitignore")) and not(f.endswith("-Execution-trace.txt"))]
 
 
 # For each automaton file
 for automaton_file in automaton_files:
     print("\n\n\n AUTOMATON FILE:",automaton_file)
     # Construct the command to run the python script
-    command = f"python Int1-2-test.py {automaton_file}"
+    command = f"python test.py {automaton_file}"
 
     # Construct the output file name
     output_file = f"{automaton_file.split('.')[0]}-Execution-trace.txt"

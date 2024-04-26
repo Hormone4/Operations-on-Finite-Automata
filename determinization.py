@@ -1,6 +1,6 @@
 
 import importlib
-functions = importlib.import_module("Int1-2-functions")
+functions = importlib.import_module("functions")
 
 
 
@@ -210,7 +210,7 @@ def determinize(A,L,E):
 
 if __name__ == "__main__":
     import importlib
-    functions = importlib.import_module("Int1-2-functions")
+    functions = importlib.import_module("functions")
 
     
     L = ["a","b"]

@@ -1,5 +1,5 @@
 import importlib
-functions = importlib.import_module("Int1-2-functions")
+functions = importlib.import_module("functions")
 
 # Word recognition function
 # The function should return a boolean
@@ -124,11 +124,11 @@ def read_word (word):
 
 
 if __name__ == "__main__":
-    loader = importlib.import_module("Int1-2-loader")
+    loader = importlib.import_module("loader")
 
 
     # Read the data from the text file
-    data = loader.load_data('Int1-2-15.txt')
+    data = loader.load_data('15.txt')
 
     # Create the language list
     L = loader.load_language(data)

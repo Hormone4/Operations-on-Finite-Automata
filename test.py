@@ -1,12 +1,12 @@
 import importlib
-loader = importlib.import_module("Int1-2-loader")
-functions = importlib.import_module("Int1-2-functions")
-minimization = importlib.import_module("Int1-2-minimization")
-recognition = importlib.import_module("Int1-2-recognition")
-menu = importlib.import_module("Int1-2-menu")
-determinization = importlib.import_module("Int1-2-determinization")
+loader = importlib.import_module("loader")
+functions = importlib.import_module("functions")
+minimization = importlib.import_module("minimization")
+recognition = importlib.import_module("recognition")
+menu = importlib.import_module("menu")
+determinization = importlib.import_module("determinization")
 
-#python Int1-2-tests.py > output.txt
+#python tests.py > output.txt
 
 
 
@@ -15,7 +15,7 @@ determinization = importlib.import_module("Int1-2-determinization")
 # Load the data
 # Read the data from the text file
 AUTOMATON_NUMBER = 15
-data = loader.load_data("Int1-2-"+str(AUTOMATON_NUMBER)+".txt")   # FOR MANUAL TESTS
+data = loader.load_data(str(AUTOMATON_NUMBER)+".txt")   # FOR MANUAL TESTS
 
 import sys
 # Use the sys module to get the automaton file name as a command-line argument
