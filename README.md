@@ -24,7 +24,6 @@ The folder contains 44 txt files each representing an automaton that you can tes
 1b2<br>
 2a3<br>
 3a4<br>
-<br>
 ### Explication of the text file:<br>
 2 symbols in the alphabet<br>
 A={a,b}<br>
