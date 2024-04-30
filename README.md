@@ -25,15 +25,11 @@ The folder contains 44 txt files each representing an automaton that you can tes
 2a3<br>
 3a4<br>
 ### Explication of the text file:<br>
-2 symbols in the alphabet<br>
-A={a,b}<br>
-5 states<br>
-Q={0,1,2,3,4}<br>
-1 initial state<br>
-I={0}<br>
-1 final state<br>
-T={4}<br>
-6 transitions
+- 2 symbols in the alphabet: A={a,b}<br>
+- 5 states: Q={0,1,2,3,4}<br>
+- 1 initial state: I={0}<br>
+- 1 final state: T={4}<br>
+- 6 transitions
 ### Format of the data after extraction:<br>
 L = ["a","b"]<br>
 E = [" ->", "   ", "   ", "   ", "<- "]<br>
