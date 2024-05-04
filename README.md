@@ -1,7 +1,7 @@
 # Operations-on-Finite-Automata
 ## Project
-The goal of this project was to implemnt in python all the functions appliable on a finite automaton.<br>
-The folder contains 44 txt files each representing an automaton that you can test in the program. Each automaton also has an execution trace file showing the output obtained after using the program so that you do not have to test each one of them.
+The goal of this project was to implement in python all the functions appliable on a finite automaton.<br>
+The folder ```test-automata``` contains 44 txt files each representing an automaton that you can test in the program. Each automaton also has an execution trace file showing the output obtained after using the program so that you do not have to test each one of them. The execution trace files can be created automatically running the ```execution-trace-maker.py``` file.
 ## Functions
 1. Read a finite automaton from a text file, then store it in memory
 2. Display it in the terminal

@@ -15,7 +15,7 @@ determinization = importlib.import_module("determinization")
 # Load the data
 # Read the data from the text file
 AUTOMATON_NUMBER = 15
-data = loader.load_data(str(AUTOMATON_NUMBER)+".txt")   # FOR MANUAL TESTS
+data = loader.load_data("test-automata/"+str(AUTOMATON_NUMBER)+".txt")   # FOR MANUAL TESTS
 
 import sys
 # Use the sys module to get the automaton file name as a command-line argument

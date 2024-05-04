@@ -3,11 +3,14 @@ loader = importlib.import_module("loader")
 menu = importlib.import_module("menu")
 
 
+
+
+
 AUTOMATON_NUMBER = 22
 
 
 # Load the data
-data = loader.load_data(str(AUTOMATON_NUMBER)+".txt")   # Read the data from the text file
+data = loader.load_data("test-automata/"+str(AUTOMATON_NUMBER)+".txt")   # Read the data from the text file
 
 # Create the automaton
 L = loader.load_language(data)      # Create the list containing the language 
