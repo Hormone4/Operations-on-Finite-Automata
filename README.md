@@ -24,7 +24,7 @@ The folder ```test-automata``` contains 44 txt files each representing an automa
 1b2<br>
 2a3<br>
 3a4<br>
-### Explication of the text file:<br>
+### Explanation of the text file:<br>
 - 2 symbols in the alphabet: A={a,b}<br>
 - 5 states: Q={0,1,2,3,4}<br>
 - 1 initial state: I={0}<br>
