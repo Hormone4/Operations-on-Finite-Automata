@@ -6,7 +6,7 @@
 import os
 
 # Define the directory
-dir_path = r'C:\Users\sachl\Documents\GitHub\Operations-on-Finite-Automata'  # replace with your directory path
+dir_path = r'C:\Users\...'  # replace with your directory path
 
 # Get list of all files
 files = os.listdir(dir_path)
@@ -14,9 +14,9 @@ files = os.listdir(dir_path)
 # Iterate over each file
 for file in files:
     # Check if the file starts with 'Int3'
-    if file.startswith('Int1-2-'):
+    if file.startswith('aaa'):
         # Construct new filename
-        new_filename = file.replace('Int1-2-', '')
+        new_filename = file.replace('aaa', '')
         
         # Get full file paths
         old_file_path = os.path.join(dir_path, file)
