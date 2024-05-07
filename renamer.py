@@ -13,7 +13,7 @@ files = os.listdir(dir_path)
 
 # Iterate over each file
 for file in files:
-    # Check if the file starts with 'Int3'
+    # Check if the file starts with 'aaa'
     if file.startswith('aaa'):
         # Construct new filename
         new_filename = file.replace('aaa', '')
