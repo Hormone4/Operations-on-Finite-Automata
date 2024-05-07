@@ -1,8 +1,3 @@
-# the folder contains 44 text files named as: Int3-2-44.txt, Int3-2-43.txt, Int3-2-42.txt...
-# the goal is to rename the files as: Int1-2-44.txt, Int1-2-43.txt, Int1-2-42.txt...
-
-
-
 import os
 
 # Define the directory
